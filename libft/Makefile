@@ -40,6 +40,7 @@ FTSTR_DIR =		$(SRC_DIR)ft_str/ft_split_mult_c.c \
 				$(SRC_DIR)ft_str/ft_strmapi.c \
 				$(SRC_DIR)ft_str/ft_strncmp.c \
 				$(SRC_DIR)ft_str/ft_strncpy.c \
+				$(SRC_DIR)ft_str/ft_strndup.c \
 				$(SRC_DIR)ft_str/ft_strnstr.c \
 				$(SRC_DIR)ft_str/ft_strrchr.c \
 				$(SRC_DIR)ft_str/ft_strtrim.c \
