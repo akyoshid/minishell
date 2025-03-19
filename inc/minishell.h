@@ -31,4 +31,14 @@
 # include "../libft/inc/ft_printf.h"
 # include "../libft/inc/get_next_line_bonus.h"
 
+// utils/
+// utils/ft_xlstnew.c
+t_list	*ft_xlstnew(void *content);
+// utils/ft_xstrdup.c
+char	*ft_xstrdup(const char *s1);
+// utils/ft_xstrndup.c
+char	*ft_xstrndup(const char *s1, size_t n);
+// utils/xmalloc.c
+void	*xmalloc(size_t size);
+
 #endif

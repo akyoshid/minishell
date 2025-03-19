@@ -8,6 +8,10 @@ LIBFT_DIR =	libft/
 INC =				$(INC_DIR)minishell.h
 
 SRC = \
+					$(SRC_DIR)utils/ft_xlstnew.c \
+					$(SRC_DIR)utils/ft_xstrdup.c \
+					$(SRC_DIR)utils/ft_xstrndup.c \
+					$(SRC_DIR)utils/xmalloc.c \
 					$(SRC_DIR)main.c
 
 OBJ =				$(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRC))
