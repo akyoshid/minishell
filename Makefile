@@ -17,6 +17,7 @@ SRC = \
 					$(SRC_DIR)utils/ft_xlstnew.c \
 					$(SRC_DIR)utils/ft_xstrdup.c \
 					$(SRC_DIR)utils/ft_xstrndup.c \
+					$(SRC_DIR)utils/ft_xstrtrim.c \
 					$(SRC_DIR)utils/xmalloc.c \
 					$(SRC_DIR)main.c
 

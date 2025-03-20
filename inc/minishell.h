@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:11:26 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/03/20 12:34:22 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/03/20 14:26:22 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ t_list		*ft_xlstnew(void *content);
 char		*ft_xstrdup(const char *s1);
 // utils/ft_xstrndup.c
 char		*ft_xstrndup(const char *s1, size_t n);
+// utils/ft_xstrtrim.c
+char		*ft_xstrtrim(const char *s1, const char *set);
 // utils/xmalloc.c
 void		*xmalloc(size_t size);
 
