@@ -8,6 +8,12 @@ LIBFT_DIR =	libft/
 INC =				$(INC_DIR)minishell.h
 
 SRC = \
+					$(SRC_DIR)env/clear_env_x.c \
+					$(SRC_DIR)env/create_env_x.c \
+					$(SRC_DIR)env/get_env_x.c \
+					$(SRC_DIR)env/init_env_list.c \
+					$(SRC_DIR)env/print_env_list.c \
+					$(SRC_DIR)env/search_env_x.c \
 					$(SRC_DIR)utils/ft_xlstnew.c \
 					$(SRC_DIR)utils/ft_xstrdup.c \
 					$(SRC_DIR)utils/ft_xstrndup.c \
@@ -45,4 +51,7 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re bonus
+val:
+	valgrind --leak-check=full --suppressions=valgrind.supp ./minishell
+
+.PHONY: all clean fclean re bonus val

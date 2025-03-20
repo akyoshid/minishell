@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_xstrndup.c                                      :+:      :+:    :+:   */
+/*   init_env_list.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/19 09:47:14 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/03/20 13:09:05 by akyoshid         ###   ########.fr       */
+/*   Created: 2025/03/19 17:43:39 by akyoshid          #+#    #+#             */
+/*   Updated: 2025/03/19 21:05:43 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-char	*ft_xstrndup(const char *s1, size_t n)
-{
-	char	*temp;
+#define DEFPATH "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
-	temp = ft_strndup(s1, n);
-	if (temp == NULL)
-	{
-		ft_dprintf(STDERR_FILENO, "ft_xstrndup: cannot allocate memory\n");
-		exit(EXIT_USAGE);
-	}
-	return (temp);
+void	init_env_list(char **envp, t_ctx *ctx)
+{
+	ctx->env_list = create_env_list(envp);
+	if (search_env_node(ctx->env_list, "PATH") == NULL)
+		ft_lstadd_back(&ctx->env_list,
+			create_env_node(ft_xstrdup("PATH"), ft_xstrdup(DEFPATH)));
 }

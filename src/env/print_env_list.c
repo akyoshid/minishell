@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_xstrndup.c                                      :+:      :+:    :+:   */
+/*   print_env_list.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/19 09:47:14 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/03/20 13:09:05 by akyoshid         ###   ########.fr       */
+/*   Created: 2025/03/19 20:40:11 by akyoshid          #+#    #+#             */
+/*   Updated: 2025/03/19 21:25:56 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-char	*ft_xstrndup(const char *s1, size_t n)
+void	print_env_list(t_env_list *env_list)
 {
-	char	*temp;
+	t_env_list	*current_node;
 
-	temp = ft_strndup(s1, n);
-	if (temp == NULL)
+	current_node = env_list;
+	while (current_node != NULL)
 	{
-		ft_dprintf(STDERR_FILENO, "ft_xstrndup: cannot allocate memory\n");
-		exit(EXIT_USAGE);
+		printf("%s=", get_env_key(current_node));
+		printf("%s\n", get_env_value(current_node));
+		current_node = current_node->next;
 	}
-	return (temp);
 }

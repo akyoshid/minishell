@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 17:05:23 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/03/19 19:48:13 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/03/20 13:08:56 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_list	*ft_xlstnew(void *content)
 	if (temp == NULL)
 	{
 		ft_dprintf(STDERR_FILENO, "ft_lstnew: cannot allocate memory\n");
-		exit(2);
+		exit(EXIT_USAGE);
 	}
 	return (temp);
 }
