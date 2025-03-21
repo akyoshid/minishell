@@ -14,8 +14,16 @@ SRC = \
 					$(SRC_DIR)env/init_env_list.c \
 					$(SRC_DIR)env/print_env_list.c \
 					$(SRC_DIR)env/search_env_x.c \
+					$(SRC_DIR)token/clear_token_x.c \
+					$(SRC_DIR)token/create_op_token_node.c \
+					$(SRC_DIR)token/create_token_list.c \
+					$(SRC_DIR)token/create_word_token_node.c \
+					$(SRC_DIR)token/get_char_type.c \
+					$(SRC_DIR)token/get_token_x.c \
+					$(SRC_DIR)token/print_token_list.c \
 					$(SRC_DIR)utils/ft_xlstnew.c \
 					$(SRC_DIR)utils/ft_xstrdup.c \
+					$(SRC_DIR)utils/ft_xstrjoin.c \
 					$(SRC_DIR)utils/ft_xstrndup.c \
 					$(SRC_DIR)utils/ft_xstrtrim.c \
 					$(SRC_DIR)utils/xmalloc.c \
