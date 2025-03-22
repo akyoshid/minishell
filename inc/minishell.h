@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:11:26 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/03/21 14:52:34 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/03/22 18:50:48 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,10 @@
 # include "../libft/inc/ft_printf.h"
 # include "../libft/inc/get_next_line_bonus.h"
 
-# define EXIT_USAGE 2
+# define EXIT_USAGE		2
 # define EXIT_NOTEXEC	126
 # define EX_NOTFOUND	127
+# define NO_TOKEN		-1
 
 enum e_char_type
 {
@@ -55,8 +56,10 @@ enum e_token_type
 	TOKEN_CNTLOP_PIPE,
 	TOKEN_CNTLOP_AND_LIST,
 	TOKEN_CNTLOP_OR_LIST,
+	TOKEN_CNTLOP_SEMICOLON_LIST,
 	TOKEN_CNTLOP_L_PARENTHESE,
 	TOKEN_CNTLOP_R_PARENTHESE,
+	TOKEN_UNDEFINED,
 };
 
 typedef t_list			t_env_list;
@@ -106,11 +109,11 @@ t_env_list		*search_env_node(t_env_list *env_list, char *key);
 void			clear_token_node_content(void *void_content);
 void			clear_token_list(t_token_list **token_list);
 // token/create_op_token_node.c
-t_token_list	*create_op_token_node(char **input_p);
+t_token_list	*create_op_token_node(char **input_p, int *i_p);
 // token/create_token_list.c
-t_token_list	*create_token_list(char *input);
+t_token_list	*create_token_list(char **input_p);
 // token/create_word_token_node.c
-t_token_list	*create_word_token_node(char **input_p);
+t_token_list	*create_word_token_node(char **input_p, int *i_p);
 // token/get_char_type.c
 int				get_char_type(char c);
 // token/get_token_x.c

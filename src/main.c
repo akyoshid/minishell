@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:13:06 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/03/20 17:30:34 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/03/22 17:04:54 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,28 @@ static int	_is_empty_input(char *input)
 	}
 }
 
+void	exec_input(t_ctx *ctx, char **input_p)
+{
+	t_token_list	*token_list;
+
+	token_list = create_token_list(input_p);
+	if (token_list == NULL)
+	{
+		ctx->exit_status = EXIT_USAGE;
+		return ;
+	}
+	print_token_list(token_list);
+	// parse_token_list_into_ast
+	// exec_ast
+	clear_token_list(&token_list);
+}
+
 static void	_reader_loop(t_ctx *ctx)
 {
 	char	*input;
+	char	*prev_input;
 
-	(void)ctx;
+	prev_input = NULL;
 	rl_outstream = stderr;
 	while (1)
 	{
@@ -54,11 +71,23 @@ static void	_reader_loop(t_ctx *ctx)
 			break ;
 		if (_is_empty_input(input) == 1)
 			continue ;
-		// exec command
-		if (input[0] != '\t' && input[0] != '\n' && input[0] != ' ')
+		exec_input(ctx, &input);
+		if (input[0] != '\t' && input[0] != '\n' && input[0] != ' '
+			&& ft_strcmp(prev_input, input) != 0)
+		{
 			add_history(input);
-		free(input);
+			free(prev_input);
+			prev_input = input;
+			input = NULL;
+		}
+		else
+		{
+			free(input);
+			input = NULL;
+		}
 	}
+	free(input);
+	free(prev_input);
 	rl_clear_history();
 }
 

@@ -1,11 +1,7 @@
 {
-   <readline_internal_teardown()>
+   suppress_readline_leaks
    Memcheck:Leak
-   match-leak-kinds: definite
-   fun:malloc
-   fun:xmalloc
-   fun:readline_internal_teardown
+   ...
    fun:readline
-   fun:exec_loop
-   fun:main
+   ...
 }

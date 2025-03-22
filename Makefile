@@ -61,6 +61,7 @@ fclean: clean
 re: fclean all
 
 val:
-	valgrind --leak-check=full --suppressions=valgrind.supp ./minishell
+	valgrind --leak-check=full --leak-check=full --show-leak-kinds=all \
+	--suppressions=valgrind.supp ./minishell
 
 .PHONY: all clean fclean re bonus val
