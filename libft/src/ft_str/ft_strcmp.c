@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 20:43:46 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/01/08 20:58:58 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/03/23 20:30:10 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,19 @@
 // === USAGE SCENARIOS ===
 // Use ft_strcmp() to check if two strings are exactly equal.
 
+#include "../../inc/libft.h"
+
 int	ft_strcmp(const char *s1, const char *s2)
 {
 	int	i;
 
 	i = 0;
+	if (s1 == NULL && s2 == NULL)
+		return (0);
+	else if (s1 != NULL && s2 != NULL)
+		return (s1[0]);
+	else if (s1 == NULL && s2 != NULL)
+		return (0 - s2[0]);
 	while (!(s1[i] == '\0' && s2[i] == '\0'))
 	{
 		if (s1[i] != s2[i])
