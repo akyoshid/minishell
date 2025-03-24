@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:13:06 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/03/22 17:04:54 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/03/24 17:31:58 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,20 @@ static int	_is_empty_input(char *input)
 	}
 }
 
-void	exec_input(t_ctx *ctx, char **input_p)
+void	exec_input(t_ctx *ctx, char *input)
 {
 	t_token_list	*token_list;
 
-	token_list = create_token_list(input_p);
+	token_list = create_token_list(input);
 	if (token_list == NULL)
 	{
 		ctx->exit_status = EXIT_USAGE;
 		return ;
 	}
 	print_token_list(token_list);
-	// parse_token_list_into_ast
+	// read_here_doc(token_list);
+	// perform_expansion(token_list);
+	// parse_token_list_into_ast // <- setup_redir
 	// exec_ast
 	clear_token_list(&token_list);
 }
@@ -71,7 +73,7 @@ static void	_reader_loop(t_ctx *ctx)
 			break ;
 		if (_is_empty_input(input) == 1)
 			continue ;
-		exec_input(ctx, &input);
+		exec_input(ctx, input);
 		if (input[0] != '\t' && input[0] != '\n' && input[0] != ' '
 			&& ft_strcmp(prev_input, input) != 0)
 		{

@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 09:41:28 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/03/21 16:50:32 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/03/23 18:31:34 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ static void	_print_token_type(int token_type)
 		printf("TOKEN_CNTLOP_AND_LIST\n");
 	else if (token_type == TOKEN_CNTLOP_OR_LIST)
 		printf("TOKEN_CNTLOP_OR_LIST\n");
-	else if (token_type == TOKEN_CNTLOP_SEMICOLON_LIST)
-		printf("TOKEN_CNTLOP_SEMICOLON_LIST\n");
 	else if (token_type == TOKEN_CNTLOP_L_PARENTHESE)
 		printf("TOKEN_CNTLOP_L_PARENTHESE\n");
 	else if (token_type == TOKEN_CNTLOP_R_PARENTHESE)

@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:11:26 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/03/22 18:50:48 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/03/24 19:34:12 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,15 @@ enum e_token_type
 	TOKEN_CNTLOP_PIPE,
 	TOKEN_CNTLOP_AND_LIST,
 	TOKEN_CNTLOP_OR_LIST,
-	TOKEN_CNTLOP_SEMICOLON_LIST,
 	TOKEN_CNTLOP_L_PARENTHESE,
 	TOKEN_CNTLOP_R_PARENTHESE,
 	TOKEN_UNDEFINED,
+};
+
+enum e_check_syntax_return_value
+{
+	SYNTAX_OK,
+	SYNTAX_ERROR,
 };
 
 typedef t_list			t_env_list;
@@ -104,16 +109,34 @@ void			print_env_list(t_env_list *env_list);
 char			*search_env_value(t_env_list *env_list, char *key);
 t_env_list		*search_env_node(t_env_list *env_list, char *key);
 
+// syntax/
+// syntax/current_is_head.c
+int				check_syntax_current_is_head(int head_token_type);
+// syntax/prev_is_cntlop_pipe_and_or_list_l_parenthese.c
+int				check_syntax_prev_is_cntlop_pipe_and_or_list_l_parenthese(
+					int current_token_type);
+// syntax/prev_is_cntlop_r_parenthese.c
+int				check_syntax_prev_is_cntlop_r_parenthese(
+					int current_token_type, t_token_list *current_token_node);
+// syntax/prev_is_redirop.c
+int				check_syntax_prev_is_redirop(int current_token_type);
+// syntax/prev_is_word.c
+int				check_syntax_prev_is_word(int current_token_type);
+// syntax/check_syntax.c
+int				check_syntax(t_token_list *token_list);
+// syntax/print_syntax_error.c
+void			print_syntax_error(int current_token_type, char *token_word);
+
 // token/
 // token/clear_token_x.c
 void			clear_token_node_content(void *void_content);
 void			clear_token_list(t_token_list **token_list);
 // token/create_op_token_node.c
-t_token_list	*create_op_token_node(char **input_p, int *i_p);
+t_token_list	*create_op_token_node(char **input_p);
 // token/create_token_list.c
-t_token_list	*create_token_list(char **input_p);
+t_token_list	*create_token_list(char *input);
 // token/create_word_token_node.c
-t_token_list	*create_word_token_node(char **input_p, int *i_p);
+t_token_list	*create_word_token_node(char **input_p);
 // token/get_char_type.c
 int				get_char_type(char c);
 // token/get_token_x.c

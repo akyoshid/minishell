@@ -14,6 +14,13 @@ SRC = \
 					$(SRC_DIR)env/init_env_list.c \
 					$(SRC_DIR)env/print_env_list.c \
 					$(SRC_DIR)env/search_env_x.c \
+					$(SRC_DIR)syntax/check_syntax.c \
+					$(SRC_DIR)syntax/current_is_head.c \
+					$(SRC_DIR)syntax/prev_is_cntlop_pipe_and_or_list_l_parenthese.c \
+					$(SRC_DIR)syntax/prev_is_cntlop_r_parenthese.c \
+					$(SRC_DIR)syntax/prev_is_redirop.c \
+					$(SRC_DIR)syntax/prev_is_word.c \
+					$(SRC_DIR)syntax/print_syntax_error.c \
 					$(SRC_DIR)token/clear_token_x.c \
 					$(SRC_DIR)token/create_op_token_node.c \
 					$(SRC_DIR)token/create_token_list.c \
