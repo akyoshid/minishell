@@ -109,6 +109,10 @@ void			print_env_list(t_env_list *env_list);
 char			*search_env_value(t_env_list *env_list, char *key);
 t_env_list		*search_env_node(t_env_list *env_list, char *key);
 
+// expansion
+// expansion/is_avail_char_for_var_name.c
+int				is_avail_char_for_var_name(int c);
+
 // syntax/
 // syntax/current_is_head.c
 int				check_syntax_current_is_head(int head_token_type);
