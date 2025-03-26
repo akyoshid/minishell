@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 20:43:46 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/03/23 20:30:10 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/03/26 18:03:57 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_strcmp(const char *s1, const char *s2)
 	i = 0;
 	if (s1 == NULL && s2 == NULL)
 		return (0);
-	else if (s1 != NULL && s2 != NULL)
+	else if (s1 != NULL && s2 == NULL)
 		return (s1[0]);
 	else if (s1 == NULL && s2 != NULL)
 		return (0 - s2[0]);
