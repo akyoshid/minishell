@@ -130,6 +130,7 @@ void			print_syntax_error(int current_token_type, char *token_word);
 // token/
 // token/clear_token_x.c
 void			clear_token_node_content(void *void_content);
+void			clear_token_node(t_token_list *token_node);
 void			clear_token_list(t_token_list **token_list);
 // token/create_op_token_node.c
 t_token_list	*create_op_token_node(char **input_p);
@@ -144,6 +145,9 @@ int				get_token_type(t_token_list *token_node);
 char			*get_token_word(t_token_list *token_node);
 // token/print_token_list.c
 void			print_token_list(t_token_list *token_list);
+// token/set_token_x.c
+void			set_token_type(t_token_list *token_node, int type);
+void			set_token_word(t_token_list *token_node, char *word);
 
 // utils/
 // utils/ft_xlstnew.c
@@ -156,6 +160,8 @@ char			*ft_xstrjoin(char const *s1, char const *s2);
 char			*ft_xstrndup(const char *s1, size_t n);
 // utils/ft_xstrtrim.c
 char			*ft_xstrtrim(const char *s1, const char *set);
+// utils/is_ifs.c
+int				is_ifs(char c);
 // utils/xmalloc.c
 void			*xmalloc(size_t size);
 

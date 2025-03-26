@@ -28,11 +28,13 @@ SRC = \
 					$(SRC_DIR)token/get_char_type.c \
 					$(SRC_DIR)token/get_token_x.c \
 					$(SRC_DIR)token/print_token_list.c \
+					$(SRC_DIR)token/set_token_x.c \
 					$(SRC_DIR)utils/ft_xlstnew.c \
 					$(SRC_DIR)utils/ft_xstrdup.c \
 					$(SRC_DIR)utils/ft_xstrjoin.c \
 					$(SRC_DIR)utils/ft_xstrndup.c \
 					$(SRC_DIR)utils/ft_xstrtrim.c \
+					$(SRC_DIR)utils/is_ifs.c \
 					$(SRC_DIR)utils/xmalloc.c \
 					$(SRC_DIR)main.c
 

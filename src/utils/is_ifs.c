@@ -1,32 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clear_token_x.c                                    :+:      :+:    :+:   */
+/*   is_ifs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/21 09:36:44 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/03/26 12:35:50 by akyoshid         ###   ########.fr       */
+/*   Created: 2025/03/25 20:34:20 by akyoshid          #+#    #+#             */
+/*   Updated: 2025/03/25 20:35:54 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-void	clear_token_node_content(void *void_content)
+int	is_ifs(char c)
 {
-	t_token	*content;
-
-	content = (t_token *)void_content;
-	free(content->word);
-	free(content);
-}
-
-void	clear_token_node(t_token_list *token_node)
-{
-	ft_lstdelone(token_node, clear_token_node_content);
-}
-
-void	clear_token_list(t_token_list **token_list)
-{
-	ft_lstclear(token_list, clear_token_node_content);
+	if (c == ' ' || c == '\t' || c == '\n')
+		return (1);
+	else
+		return (0);
 }

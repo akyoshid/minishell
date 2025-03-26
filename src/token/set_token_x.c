@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clear_token_x.c                                    :+:      :+:    :+:   */
+/*   set_token_x.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/21 09:36:44 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/03/26 12:35:50 by akyoshid         ###   ########.fr       */
+/*   Created: 2025/03/25 21:12:26 by akyoshid          #+#    #+#             */
+/*   Updated: 2025/03/25 21:15:20 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-void	clear_token_node_content(void *void_content)
+void	set_token_type(t_token_list *token_node, int type)
 {
-	t_token	*content;
-
-	content = (t_token *)void_content;
-	free(content->word);
-	free(content);
+	if (token_node == NULL)
+		return ;
+	((t_token *)token_node->content)->type = type;
 }
 
-void	clear_token_node(t_token_list *token_node)
+void	set_token_word(t_token_list *token_node, char *word)
 {
-	ft_lstdelone(token_node, clear_token_node_content);
-}
-
-void	clear_token_list(t_token_list **token_list)
-{
-	ft_lstclear(token_list, clear_token_node_content);
+	if (token_node == NULL)
+		return ;
+	((t_token *)token_node->content)->word = word;
 }
