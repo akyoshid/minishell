@@ -59,6 +59,7 @@ enum e_token_type
 	TOKEN_CNTLOP_L_PARENTHESE,
 	TOKEN_CNTLOP_R_PARENTHESE,
 	TOKEN_UNDEFINED,
+	TOKEN_NOOP,
 };
 
 enum e_check_syntax_return_value
