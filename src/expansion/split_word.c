@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 12:56:07 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/03/26 17:49:51 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/03/27 13:06:15 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ t_token_list	*split_word(t_token_list **token_list_p,
 	new_list = _split_word_core(get_token_word(current_node));
 	if (new_list == NULL)
 	{
+		free(get_token_word(current_node));
+		set_token_word(current_node, NULL);
 		set_token_type(current_node, TOKEN_NOOP);
 		return (current_node);
 	}
