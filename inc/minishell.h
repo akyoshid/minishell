@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:11:26 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/03/24 19:34:12 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/03/26 17:51:02 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,8 +111,18 @@ char			*search_env_value(t_env_list *env_list, char *key);
 t_env_list		*search_env_node(t_env_list *env_list, char *key);
 
 // expansion
+// expansion/expand_env_in_token_list.c
+void			expand_env_in_token_list(
+					t_ctx *ctx, t_token_list **token_list_p);
+// expansion/expand_env.c
+void			expand_env(t_ctx *ctx, char **word_p);
 // expansion/is_avail_char_for_var_name.c
 int				is_avail_char_for_var_name(int c);
+// expansion/perform_expansion.c
+void			perform_expansion(t_ctx *ctx, t_token_list **token_list_p);
+// expansion/split_word.c
+t_token_list	*split_word(t_token_list **token_list_p,
+					t_token_list *prev_node, t_token_list *current_node);
 
 // syntax/
 // syntax/current_is_head.c
