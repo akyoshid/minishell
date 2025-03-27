@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:11:26 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/03/26 17:51:02 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/03/27 13:29:15 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,8 @@ void			expand_env(t_ctx *ctx, char **word_p);
 int				is_avail_char_for_var_name(int c);
 // expansion/perform_expansion.c
 void			perform_expansion(t_ctx *ctx, t_token_list **token_list_p);
+// expansion/remove_quote.c
+void			remove_quote(t_token_list *token_list);
 // expansion/split_word.c
 t_token_list	*split_word(t_token_list **token_list_p,
 					t_token_list *prev_node, t_token_list *current_node);

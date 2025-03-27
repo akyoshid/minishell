@@ -18,6 +18,7 @@ SRC = \
 					$(SRC_DIR)expansion/expand_env.c \
 					$(SRC_DIR)expansion/is_avail_char_for_var_name.c \
 					$(SRC_DIR)expansion/perform_expansion.c \
+					$(SRC_DIR)expansion/remove_quote.c \
 					$(SRC_DIR)expansion/split_word.c \
 					$(SRC_DIR)syntax/check_syntax.c \
 					$(SRC_DIR)syntax/current_is_head.c \
