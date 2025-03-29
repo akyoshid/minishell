@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 17:20:15 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/03/26 17:47:52 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/03/29 18:52:08 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	expand_env_in_token_list(t_ctx *ctx, t_token_list **token_list_p)
 {
 	t_token_list	*prev_node;
 	t_token_list	*current_node;
+	int				prev_node_type;
 
 	prev_node = NULL;
 	current_node = *token_list_p;
@@ -23,8 +24,14 @@ void	expand_env_in_token_list(t_ctx *ctx, t_token_list **token_list_p)
 	{
 		if (get_token_type(current_node) == TOKEN_WORD)
 		{
-			expand_env(ctx, &((t_token *)current_node->content)->word);
-			current_node = split_word(token_list_p, prev_node, current_node);
+			prev_node_type = get_token_type(prev_node);
+			if (prev_node_type != TOKEN_REDIROP_IN_HEREDOC
+				&& prev_node_type != TOKEN_REDIROP_IN_HEREDOC_DEL_TAB)
+			{
+				expand_env(ctx, &((t_token *)current_node->content)->word);
+				current_node = split_word(
+						token_list_p, prev_node, current_node);
+			}
 		}
 		prev_node = current_node;
 		current_node = current_node->next;
