@@ -169,6 +169,8 @@ void			set_token_type(t_token_list *token_node, int type);
 void			set_token_word(t_token_list *token_node, char *word);
 
 // utils/
+// utils/ft_xcalloc.c
+void			*ft_xcalloc(size_t count, size_t size);
 // utils/ft_xlstnew.c
 t_list			*ft_xlstnew(void *content);
 // utils/ft_xrealloc.c
