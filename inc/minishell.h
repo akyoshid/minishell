@@ -171,6 +171,8 @@ void			set_token_word(t_token_list *token_node, char *word);
 // utils/
 // utils/ft_xlstnew.c
 t_list			*ft_xlstnew(void *content);
+// utils/ft_xrealloc.c
+void			*ft_xrealloc(void *ptr, size_t old_size, size_t new_size);
 // utils/ft_xstrdup.c
 char			*ft_xstrdup(const char *s1);
 // utils/ft_xstrjoin.c

@@ -36,6 +36,7 @@ SRC = \
 					$(SRC_DIR)token/print_token_list.c \
 					$(SRC_DIR)token/set_token_x.c \
 					$(SRC_DIR)utils/ft_xlstnew.c \
+					$(SRC_DIR)utils/ft_xrealloc.c \
 					$(SRC_DIR)utils/ft_xstrdup.c \
 					$(SRC_DIR)utils/ft_xstrjoin.c \
 					$(SRC_DIR)utils/ft_xstrndup.c \
