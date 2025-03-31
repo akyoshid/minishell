@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/29 15:20:03 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/03/30 21:04:22 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/03/30 23:46:33 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,9 @@ static int	_parse_command_core_switch(
 	if (token_type >= TOKEN_CNTLOP_PIPE
 		&& token_type <= TOKEN_CNTLOP_R_PARENTHESE)
 		return (BREAK);
-	else if (token_type >= TOKEN_REDIROP_IN
-		&& token_type <= TOKEN_REDIROP_OUT_APPEND)
+	else if ((token_type >= TOKEN_REDIROP_IN
+			&& token_type <= TOKEN_REDIROP_OUT_APPEND)
+		|| token_type == TOKEN_REDIROP_AMBIGUOUS)
 		ft_lstadd_back(&new_node->redir_list,
 			parse_redir(ctx, current_token_node_p));
 	else if (token_type == TOKEN_WORD)

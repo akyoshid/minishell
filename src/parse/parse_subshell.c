@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/29 23:23:14 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/03/30 21:39:35 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/03/30 23:47:07 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@ static void	_parse_subshell_redir(
 	while (*current_token_node_p != NULL)
 	{
 		token_type = get_token_type(*current_token_node_p);
-		if (token_type >= TOKEN_REDIROP_IN
-			&& token_type <= TOKEN_REDIROP_OUT_APPEND)
+		if ((token_type >= TOKEN_REDIROP_IN
+				&& token_type <= TOKEN_REDIROP_OUT_APPEND)
+			|| token_type == TOKEN_REDIROP_AMBIGUOUS)
 			ft_lstadd_back(&new_node->redir_list,
 				parse_redir(ctx, current_token_node_p));
 		else

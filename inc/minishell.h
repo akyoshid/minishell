@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:11:26 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/03/30 20:51:50 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/03/30 23:44:24 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ enum e_token_type
 	TOKEN_CNTLOP_R_PARENTHESE,
 	TOKEN_UNDEFINED,
 	TOKEN_NOOP,
+	TOKEN_REDIROP_AMBIGUOUS,
 };
 
 enum e_check_syntax_return_value
@@ -84,6 +85,7 @@ enum e_redir_type
 	REDIR_IN,
 	REDIR_OUT,
 	REDIR_OUT_APPEND,
+	REDIR_AMBIGUOUS,
 };
 
 enum e_parse_command_state
@@ -187,7 +189,8 @@ void			perform_expansion(t_ctx *ctx, t_token_list **token_list_p);
 void			remove_quote(t_token_list *token_list);
 // expansion/split_word.c
 t_token_list	*split_word(t_token_list **token_list_p,
-					t_token_list *prev_node, t_token_list *current_node);
+					t_token_list *prev_node, t_token_list *current_node,
+					char *current_node_word_original);
 
 // heredoc/
 // heredoc/perform_heredoc.c
@@ -200,6 +203,8 @@ t_ast			*parse_and_or(t_ctx *ctx, t_token_list **current_token_node_p);
 t_ast			*parse_command(t_ctx *ctx, t_token_list **current_token_node_p);
 // parse/parse_pipe.c
 t_ast			*parse_pipe(t_ctx *ctx, t_token_list **current_token_node_p);
+t_redir_list	*parse_redir(
+					t_ctx *ctx, t_token_list **current_token_node_p);
 // parse/parse_subshell.c
 t_ast			*parse_subshell(
 					t_ctx *ctx, t_token_list **current_token_node_p);

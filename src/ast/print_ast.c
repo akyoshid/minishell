@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/30 16:38:00 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/03/30 21:42:28 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/03/30 23:25:10 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ static void	_print_redir_list(t_redir_list *redir_list)
 			printf("> ");
 		else if (redir_type == REDIR_OUT_APPEND)
 			printf(">> ");
+		else if (redir_type == REDIR_AMBIGUOUS)
+			printf("<?> ");
 		else
 			printf("\033[31mError in _print_redir_list\033[0m ");
 		printf("%s ", get_redir_word(current_node));

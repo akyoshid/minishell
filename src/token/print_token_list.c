@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 09:41:28 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/03/29 21:46:21 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/03/30 23:46:09 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ static void	_print_token_type_redirop(int token_type)
 		printf("TOKEN_REDIROP_OUT\n");
 	else if (token_type == TOKEN_REDIROP_OUT_APPEND)
 		printf("TOKEN_REDIROP_OUT_APPEND\n");
+	else if (token_type == TOKEN_REDIROP_AMBIGUOUS)
+		printf("TOKEN_REDIROP_AMBIGUOUS\n");
 }
 
 static void	_print_token_type_cntlop(int token_type)
@@ -63,8 +65,9 @@ void	print_token_list(t_token_list *token_list)
 		token_type = get_token_type(current_node);
 		if (token_type == TOKEN_WORD)
 			printf("%s\n", get_token_word(current_node));
-		else if (token_type >= TOKEN_REDIROP_IN
-			&& token_type <= TOKEN_REDIROP_OUT_APPEND)
+		else if ((token_type >= TOKEN_REDIROP_IN
+				&& token_type <= TOKEN_REDIROP_OUT_APPEND)
+			|| token_type == TOKEN_REDIROP_AMBIGUOUS)
 			_print_token_type_redirop(token_type);
 		else if (token_type >= TOKEN_CNTLOP_PIPE
 			&& token_type <= TOKEN_CNTLOP_R_PARENTHESE)
