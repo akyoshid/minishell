@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:13:06 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/03/26 17:45:30 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/03/30 20:29:09 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ static int	_is_empty_input(char *input)
 void	exec_input(t_ctx *ctx, char *input)
 {
 	t_token_list	*token_list;
+	t_ast			*ast;
 
 	token_list = create_token_list(input);
 	if (token_list == NULL)
@@ -48,9 +49,11 @@ void	exec_input(t_ctx *ctx, char *input)
 	}
 	perform_expansion(ctx, &token_list);
 	print_token_list(token_list);
-	// parse_token_list_into_ast // <- setup_redir <- read_heredoc
-	// exec_ast
+	ast = parse_token_list_into_ast(ctx, token_list);
 	clear_token_list(&token_list);
+	print_ast(ast);
+	clear_ast(ast);
+	// exec_ast
 }
 
 static void	_reader_loop(t_ctx *ctx)

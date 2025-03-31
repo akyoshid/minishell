@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:11:26 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/03/27 13:29:15 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/03/30 20:51:50 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,37 @@ enum e_check_syntax_return_value
 	SYNTAX_ERROR,
 };
 
+enum e_ast_type
+{
+	AST_COMMAND,
+	AST_PIPE,
+	AST_AND,
+	AST_OR,
+	AST_SUBSHELL,
+};
+
+enum e_redir_type
+{
+	REDIR_IN,
+	REDIR_OUT,
+	REDIR_OUT_APPEND,
+};
+
+enum e_parse_command_state
+{
+	CONTINUE,
+	BREAK,
+};
+
 typedef t_list			t_env_list;
 typedef t_list			t_token_list;
+typedef t_list			t_redir_list;
+
 typedef struct s_ctx	t_ctx;
 typedef struct s_env	t_env;
 typedef struct s_token	t_token;
+typedef struct s_ast	t_ast;
+typedef struct s_redir	t_redir;
 
 struct s_ctx
 {
@@ -93,6 +119,41 @@ struct s_token
 	int		type;
 	char	*word;
 };
+
+struct s_ast
+{
+	int				type;
+	char			**cmd_args;
+	t_ast			*subshell_ast;
+	t_redir_list	*redir_list;
+	t_ast			*left;
+	t_ast			*right;
+};
+
+struct s_redir
+{
+	int				type;
+	char			*word;
+};
+
+typedef struct s_parse_command_info
+{
+	int		arg_count;
+	int		arg_cap;
+	bool	noop_flag;
+}			t_parse_command_info;
+
+// ast/
+// ast/clear_ast.c
+void			clear_cmd_args(char **cmd_args);
+void			clear_redir_node_content(void *void_content);
+void			clear_redir_list(t_redir_list **redir_list);
+void			clear_ast(t_ast *ast);
+// ast/get_redir_x.c
+int				get_redir_type(t_redir_list *redir_node);
+char			*get_redir_word(t_redir_list *redir_node);
+// ast/print_ast.c
+void			print_ast(t_ast *ast);
 
 // env/
 // env/clear_env_x.c
@@ -127,6 +188,24 @@ void			remove_quote(t_token_list *token_list);
 // expansion/split_word.c
 t_token_list	*split_word(t_token_list **token_list_p,
 					t_token_list *prev_node, t_token_list *current_node);
+
+// heredoc/
+// heredoc/perform_heredoc.c
+void			perform_heredoc(t_ctx *ctx, t_redir *content, int token_type);
+
+// parse/
+// parse/parse_and_or.c
+t_ast			*parse_and_or(t_ctx *ctx, t_token_list **current_token_node_p);
+// parse/parse_command.c
+t_ast			*parse_command(t_ctx *ctx, t_token_list **current_token_node_p);
+// parse/parse_pipe.c
+t_ast			*parse_pipe(t_ctx *ctx, t_token_list **current_token_node_p);
+// parse/parse_subshell.c
+t_ast			*parse_subshell(
+					t_ctx *ctx, t_token_list **current_token_node_p);
+// parse/parse_token_list_into_ast.c
+t_ast			*parse_token_list_into_ast(
+					t_ctx *ctx, t_token_list *token_list);
 
 // syntax/
 // syntax/current_is_head.c

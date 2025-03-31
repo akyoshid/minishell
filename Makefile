@@ -8,6 +8,9 @@ LIBFT_DIR =	libft/
 INC =				$(INC_DIR)minishell.h
 
 SRC = \
+					$(SRC_DIR)ast/clear_ast.c \
+					$(SRC_DIR)ast/get_redir_x.c \
+					$(SRC_DIR)ast/print_ast.c \
 					$(SRC_DIR)env/clear_env_x.c \
 					$(SRC_DIR)env/create_env_x.c \
 					$(SRC_DIR)env/get_env_x.c \
@@ -20,6 +23,13 @@ SRC = \
 					$(SRC_DIR)expansion/perform_expansion.c \
 					$(SRC_DIR)expansion/remove_quote.c \
 					$(SRC_DIR)expansion/split_word.c \
+					$(SRC_DIR)heredoc/perform_heredoc.c \
+					$(SRC_DIR)parse/parse_and_or.c \
+					$(SRC_DIR)parse/parse_command.c \
+					$(SRC_DIR)parse/parse_pipe.c \
+					$(SRC_DIR)parse/parse_redir.c \
+					$(SRC_DIR)parse/parse_subshell.c \
+					$(SRC_DIR)parse/parse_token_list_into_ast.c \
 					$(SRC_DIR)syntax/check_syntax.c \
 					$(SRC_DIR)syntax/current_is_head.c \
 					$(SRC_DIR)syntax/prev_is_cntlop_pipe_and_or_list_l_parenthese.c \
