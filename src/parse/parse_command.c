@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/29 15:20:03 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/03/30 23:46:33 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/03/31 16:12:01 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ static void	_add_cmd_args(
 	new_node->cmd_args[info->arg_count] = ft_xstrdup(word);
 	info->arg_count++;
 	new_node->cmd_args[info->arg_count] = NULL;
-	if (current_token_node_p != NULL)
-		*current_token_node_p = (*current_token_node_p)->next;
+	*current_token_node_p = (*current_token_node_p)->next;
 }
 
 // if (token_type == TOKEN_NOOP), enter the else statement
@@ -58,7 +57,6 @@ static int	_parse_command_core_switch(
 	return (CONTINUE);
 }
 
-// if (token_type == TOKEN_NOOP), enter the else statement inside the while loop
 static t_ast	*_parse_command_core(
 	t_ctx *ctx, t_token_list **current_token_node_p, t_ast *new_node)
 {
@@ -82,10 +80,34 @@ static t_ast	*_parse_command_core(
 	return (new_node);
 }
 
-// Parse as a command until the control operator token appears.
-// However, if first token is TOKEN_CNTLOP_L_PARENTHESE,
-//  call parse_subshell() → parse_and_or()
-//  and continue parsing until TOKEN_CNTLOP_R_PARENTHESE appears.
+// If the first token is TOKEN_CNTLOP_L_PARENTHESE,
+//  call parse_subshell() and parse as a subshell
+//  until TOKEN_CNTLOP_R_PARENTHESE appears, and then continue parsing
+//  until one of the following control operator tokens:
+//  - TOKEN_CNTLOP_PIPE
+//  - TOKEN_CNTLOP_AND_LIST
+//  - TOKEN_CNTLOP_OR_LIST
+//  - TOKEN_CNTLOP_R_PARENTHESE
+//  or NULL termination of the token list appears.
+// Otherwise, parse as a command
+//  until one of the following control operator tokens:
+//  - TOKEN_CNTLOP_PIPE
+//  - TOKEN_CNTLOP_AND_LIST
+//  - TOKEN_CNTLOP_OR_LIST
+//  - TOKEN_CNTLOP_R_PARENTHESE
+//  or NULL termination of the token list appears.
+// Note that only TOKEN_CNTLOP_L_PARENTHESE
+//  cannot be a control operator that stops parsing.
+// It’s because TOKEN_CNTLOP_L_PARENTHESE
+//  must always follow one of these tokens in the grammar:
+//  - These tokens will terminate parse_command when they appear 
+//    - TOKEN_CNTLOP_PIPE
+//    - TOKEN_CNTLOP_AND_LIST
+//    - TOKEN_CNTLOP_OR_LIST
+//  - This token must always follow one of the above three in the grammar
+//   (if we didn't go to parse_subshell,
+//    i.e., if the first token is not TOKEN_CNTLOP_L_PARENTHESE)
+//    - TOKEN_CNTLOP_L_PARENTHESE
 t_ast	*parse_command(t_ctx *ctx, t_token_list **current_token_node_p)
 {
 	t_ast	*new_node;

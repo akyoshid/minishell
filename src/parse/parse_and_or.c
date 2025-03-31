@@ -6,19 +6,25 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/29 23:16:12 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/03/30 20:52:01 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/03/31 16:15:00 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-// Keep parsing until a non-pipe token appears after parse_command().
-// parse_command() terminates with the appearance of a control operator token.
-// This means parse_pipe() terminates at the appearance of the following tokens.
-// - TOKEN_CNTLOP_AND_LIST
-// - TOKEN_CNTLOP_OR_LIST
-// - TOKEN_CNTLOP_L_PARENTHESE
-// - TOKEN_CNTLOP_R_PARENTHESE
+// Keep parsing
+//  until a token except TOKEN_CNTLOP_AND_LIST or TOKEN_CNTLOP_OR_LIST
+//  or NULL termination of the token list
+//  appears after parse_pipe().
+// parse_pipe() terminates with the appearance of
+//  one of the following control operator tokens:
+//  - TOKEN_CNTLOP_AND_LIST
+//  - TOKEN_CNTLOP_OR_LIST
+//  - TOKEN_CNTLOP_R_PARENTHESE
+//  or NULL termination of the token list.
+// This means parse_pipe() terminates at the appearance of the following tokens:
+//  - TOKEN_CNTLOP_R_PARENTHESE
+//  or NULL termination of the token list.
 t_ast	*parse_and_or(t_ctx *ctx, t_token_list **current_token_node_p)
 {
 	t_ast	*left;
@@ -26,8 +32,6 @@ t_ast	*parse_and_or(t_ctx *ctx, t_token_list **current_token_node_p)
 	t_ast	*new_node;
 
 	left = parse_pipe(ctx, current_token_node_p);
-	// if (left == NULL)
-	// 	return (NULL);
 	while (*current_token_node_p != NULL)
 	{
 		token_type = get_token_type(*current_token_node_p);
@@ -45,11 +49,6 @@ t_ast	*parse_and_or(t_ctx *ctx, t_token_list **current_token_node_p)
 		new_node->left = left;
 		*current_token_node_p = (*current_token_node_p)->next;
 		new_node->right = parse_pipe(ctx, current_token_node_p);
-		// if (new_node->right == NULL)
-		// {
-		// 	free_ast_node(new_node);
-		// 	return (NULL);
-		// }
 		left = new_node;
 	}
 	return (left);
