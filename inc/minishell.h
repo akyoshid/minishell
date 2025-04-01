@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:11:26 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/03/30 23:44:24 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/01 12:17:19 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,13 @@ enum e_parse_command_state
 	PARSE_COMMAND_BREAK,
 };
 
+enum e_heredoc_reader_loop_status
+{
+	HEREDOC_READER_LOOP_SUCCESS,
+	HEREDOC_READER_LOOP_CONTINUE,
+	HEREDOC_READER_LOOP_FAILURE,
+};
+
 typedef t_list			t_env_list;
 typedef t_list			t_token_list;
 typedef t_list			t_redir_list;
@@ -145,6 +152,15 @@ typedef struct s_parse_command_info
 	bool	noop_flag;
 }			t_parse_command_info;
 
+typedef struct s_heredoc_info
+{
+	char	*delimiter;
+	char	*tmp_file_path;
+	bool	delete_tab_flag;
+	bool	no_expand_flag;
+	int		fd;
+}			t_heredoc_info;
+
 // ast/
 // ast/clear_ast.c
 void			clear_cmd_args(char **cmd_args);
@@ -194,8 +210,16 @@ t_token_list	*split_word(t_token_list **token_list_p,
 					char *current_node_word_original);
 
 // heredoc/
+// heredoc/cmp_delimiter.c
+int				cmp_delimiter(char *delimiter, char *new_line);
+// heredoc/delete_tab.c
+void			delete_tab(char *new_line);
+// heredoc/expand_env_heredoc.c
+void			expand_env_heredoc(t_ctx *ctx, char **new_line_p);
+// heredoc/get_heredoc_path.c
+char			*get_heredoc_path(void);
 // heredoc/perform_heredoc.c
-void			perform_heredoc(t_ctx *ctx, t_redir *content, int token_type);
+int				perform_heredoc(t_ctx *ctx, t_redir *content, int token_type);
 
 // parse/
 // parse/parse_and_or.c
@@ -270,6 +294,8 @@ char			*ft_xstrndup(const char *s1, size_t n);
 char			*ft_xstrtrim(const char *s1, const char *set);
 // utils/is_ifs.c
 int				is_ifs(char c);
+// utils/print_error.c
+void			print_error(char *mes1, char *mes2, char *mes3, bool use_errno);
 // utils/xmalloc.c
 void			*xmalloc(size_t size);
 

@@ -23,6 +23,10 @@ SRC = \
 					$(SRC_DIR)expansion/perform_expansion.c \
 					$(SRC_DIR)expansion/remove_quote.c \
 					$(SRC_DIR)expansion/split_word.c \
+					$(SRC_DIR)heredoc/cmp_delimiter.c \
+					$(SRC_DIR)heredoc/delete_tab.c \
+					$(SRC_DIR)heredoc/expand_env_heredoc.c \
+					$(SRC_DIR)heredoc/get_heredoc_path.c \
 					$(SRC_DIR)heredoc/perform_heredoc.c \
 					$(SRC_DIR)parse/parse_and_or.c \
 					$(SRC_DIR)parse/parse_command.c \
@@ -53,6 +57,7 @@ SRC = \
 					$(SRC_DIR)utils/ft_xstrndup.c \
 					$(SRC_DIR)utils/ft_xstrtrim.c \
 					$(SRC_DIR)utils/is_ifs.c \
+					$(SRC_DIR)utils/print_error.c \
 					$(SRC_DIR)utils/xmalloc.c \
 					$(SRC_DIR)main.c
 
