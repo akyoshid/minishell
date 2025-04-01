@@ -90,8 +90,8 @@ enum e_redir_type
 
 enum e_parse_command_state
 {
-	CONTINUE,
-	BREAK,
+	PARSE_COMMAND_CONTINUE,
+	PARSE_COMMAND_BREAK,
 };
 
 typedef t_list			t_env_list;
@@ -180,6 +180,7 @@ t_env_list		*search_env_node(t_env_list *env_list, char *key);
 void			expand_env_in_token_list(
 					t_ctx *ctx, t_token_list **token_list_p);
 // expansion/expand_env.c
+void			expand_env_core(t_ctx *ctx, char **word_p, int *i_p);
 void			expand_env(t_ctx *ctx, char **word_p);
 // expansion/is_avail_char_for_var_name.c
 int				is_avail_char_for_var_name(int c);

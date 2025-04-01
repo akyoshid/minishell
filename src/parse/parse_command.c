@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/29 15:20:03 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/03/31 16:12:01 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/01 11:48:24 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ static void	_add_cmd_args(
 	new_node->cmd_args[info->arg_count] = ft_xstrdup(word);
 	info->arg_count++;
 	new_node->cmd_args[info->arg_count] = NULL;
-	*current_token_node_p = (*current_token_node_p)->next;
+	if (current_token_node_p != NULL)
+		*current_token_node_p = (*current_token_node_p)->next;
 }
 
 // if (token_type == TOKEN_NOOP), enter the else statement
@@ -40,7 +41,7 @@ static int	_parse_command_core_switch(
 	token_type = get_token_type(*current_token_node_p);
 	if (token_type >= TOKEN_CNTLOP_PIPE
 		&& token_type <= TOKEN_CNTLOP_R_PARENTHESE)
-		return (BREAK);
+		return (PARSE_COMMAND_BREAK);
 	else if ((token_type >= TOKEN_REDIROP_IN
 			&& token_type <= TOKEN_REDIROP_OUT_APPEND)
 		|| token_type == TOKEN_REDIROP_AMBIGUOUS)
@@ -54,7 +55,7 @@ static int	_parse_command_core_switch(
 		info->noop_flag = true;
 		*current_token_node_p = (*current_token_node_p)->next;
 	}
-	return (CONTINUE);
+	return (PARSE_COMMAND_CONTINUE);
 }
 
 static t_ast	*_parse_command_core(
@@ -68,8 +69,8 @@ static t_ast	*_parse_command_core(
 	new_node->cmd_args = (char **)xmalloc(sizeof(char *) * (info.arg_cap));
 	while (*current_token_node_p != NULL)
 	{
-		if (_parse_command_core_switch(
-				ctx, current_token_node_p, new_node, &info) == BREAK)
+		if (_parse_command_core_switch(ctx,
+				current_token_node_p, new_node, &info) == PARSE_COMMAND_BREAK)
 			break ;
 	}
 	if (info.arg_count == 0

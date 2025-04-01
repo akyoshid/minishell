@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 16:52:23 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/03/27 12:21:32 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/01 11:27:21 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ static void	_replace_key_to_value(
 	*word_p = new_word;
 }
 
-static void	_expand_env_core(t_ctx *ctx, char **word_p, int *i_p)
+void	expand_env_core(t_ctx *ctx, char **word_p, int *i_p)
 {
-	int		var_key_len;
+	int	var_key_len;
 
 	var_key_len = 0;
 	while (is_avail_char_for_var_name((*word_p)[*i_p + 1 + var_key_len]) == 1)
@@ -60,7 +60,7 @@ static void	_expand_env_in_double_quote(t_ctx *ctx, char **word_p, int *i_p)
 	while ((*word_p)[*i_p] != '\"')
 	{
 		if ((*word_p)[*i_p] == '$')
-			_expand_env_core(ctx, word_p, i_p);
+			expand_env_core(ctx, word_p, i_p);
 		else
 			(*i_p)++;
 	}
@@ -77,7 +77,7 @@ static void	_expand_env_in_single_quote(char **word_p, int *i_p)
 
 void	expand_env(t_ctx *ctx, char **word_p)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	while ((*word_p)[i] != '\0')
@@ -87,7 +87,7 @@ void	expand_env(t_ctx *ctx, char **word_p)
 		else if ((*word_p)[i] == '\"')
 			_expand_env_in_double_quote(ctx, word_p, &i);
 		else if ((*word_p)[i] == '$')
-			_expand_env_core(ctx, word_p, &i);
+			expand_env_core(ctx, word_p, &i);
 		else
 			i++;
 	}
