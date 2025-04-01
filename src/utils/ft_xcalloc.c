@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 09:47:14 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/03/29 21:52:55 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/01 14:21:35 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	*ft_xcalloc(size_t count, size_t size)
 	temp = ft_calloc(count, size);
 	if (temp == NULL)
 	{
-		ft_dprintf(STDERR_FILENO, "ft_xcalloc: cannot allocate memory\n");
+		print_error("malloc", "cannot allocate memory", NULL, false);
 		exit(EXIT_USAGE);
 	}
 	return (temp);

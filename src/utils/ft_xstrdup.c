@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 09:47:14 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/03/20 13:09:01 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/01 14:22:17 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_xstrdup(const char *s1)
 	temp = ft_strdup(s1);
 	if (temp == NULL)
 	{
-		ft_dprintf(STDERR_FILENO, "ft_xstrdup: cannot allocate memory\n");
+		print_error("malloc", "cannot allocate memory", NULL, false);
 		exit(EXIT_USAGE);
 	}
 	return (temp);

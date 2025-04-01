@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 20:59:41 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/03/26 18:09:06 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/01 14:17:27 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_env_list	*create_env_node(char *key, char *value)
 	if (ft_strchr(value, '\'') != NULL || ft_strchr(value, '\"') != NULL)
 	{
 		ft_dprintf(STDERR_FILENO,
-			"minishell: init_env_list: `%s=%s': "
+			"minishell: `%s=%s': "
 			"value contains forbidden quote character\n", key, value);
 		exit(EXIT_USAGE);
 	}

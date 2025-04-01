@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 14:51:08 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/03/21 14:52:08 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/01 14:22:45 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_xstrjoin(char const *s1, char const *s2)
 	temp = ft_strjoin(s1, s2);
 	if (temp == NULL)
 	{
-		ft_dprintf(STDERR_FILENO, "ft_xstrjoin: cannot allocate memory\n");
+		print_error("malloc", "cannot allocate memory", NULL, false);
 		exit(EXIT_USAGE);
 	}
 	return (temp);

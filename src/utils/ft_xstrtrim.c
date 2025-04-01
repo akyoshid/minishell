@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 14:07:50 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/03/20 14:26:32 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/01 14:23:07 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_xstrtrim(const char *s1, const char *set)
 	temp = ft_strtrim(s1, set);
 	if (temp == NULL)
 	{
-		ft_dprintf(STDERR_FILENO, "ft_xstrtrim: cannot allocate memory\n");
+		print_error("malloc", "cannot allocate memory", NULL, false);
 		exit(EXIT_USAGE);
 	}
 	return (temp);
