@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 12:56:14 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/02 21:07:48 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/02 22:37:40 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ void	exec_input(t_ctx *ctx, char *input)
 	perform_expansion(ctx, &token_list);
 	print_token_list(token_list);
 	ast = parse_token_list_into_ast(ctx, token_list);
+	if (ast == NULL)
+	{
+		clear_token_list(&token_list);
+		return ;
+	}
 	clear_token_list(&token_list);
 	print_ast(ast);
 	clear_ast(ast);
@@ -54,6 +59,7 @@ void	reader_loop(t_ctx *ctx)
 		}
 		if (is_empty_input(input) == 1)
 			continue ;
+		ctx->exit_status = 0;
 		exec_input(ctx, input);
 		update_history(&input, &prev_input);
 	}

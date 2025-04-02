@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:11:26 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/02 21:10:33 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/02 23:45:10 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -220,6 +220,8 @@ t_token_list	*split_word(t_token_list **token_list_p,
 					char *current_node_word_original);
 
 // heredoc/
+// heredoc/check_g_signum_in_heredoc.c
+int				check_g_signum_in_heredoc(void);
 // heredoc/cmp_delimiter.c
 int				cmp_delimiter(char *delimiter, char *new_line);
 // heredoc/delete_tab.c
@@ -228,8 +230,12 @@ void			delete_tab(char *new_line);
 void			expand_env_heredoc(t_ctx *ctx, char **new_line_p);
 // heredoc/get_heredoc_path.c
 char			*get_heredoc_path(void);
+// heredoc/handle_signal_in_heredoc.c
+int				handle_signal_in_heredoc(t_ctx *ctx,
+					t_token_list **current_token_node_p, char *input);
 // heredoc/perform_heredoc.c
-int				perform_heredoc(t_ctx *ctx, t_redir *content, int token_type);
+int				perform_heredoc(t_ctx *ctx, t_redir *content,
+					int token_type, t_token_list **current_token_node_p);
 
 // parse/
 // parse/parse_and_or.c
