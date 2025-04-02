@@ -6,29 +6,13 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 12:56:14 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/02 12:59:50 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/02 20:44:09 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-static int	_is_empty_input(char *input)
-{
-	char	*trimmed_input;
-
-	trimmed_input = ft_xstrtrim(input, "\t\n ");
-	if (ft_strcmp(trimmed_input, "") == 0)
-	{
-		free(trimmed_input);
-		free(input);
-		return (1);
-	}
-	else
-	{
-		free(trimmed_input);
-		return (0);
-	}
-}
+volatile sig_atomic_t	g_sigint_flag = false;
 
 void	exec_input(t_ctx *ctx, char *input)
 {
@@ -55,34 +39,23 @@ void	reader_loop(t_ctx *ctx)
 	char	*input;
 	char	*prev_input;
 
+	input = NULL;
 	prev_input = NULL;
 	rl_outstream = stderr;
+	rl_event_hook = check_sigint_flag;
 	while (1)
 	{
+		handle_signal(ctx);
 		input = readline("minishell$ ");
 		if (input == NULL)
 		{
 			ft_dprintf(STDERR_FILENO, "exit\n");
 			break ;
 		}
-		if (ft_strcmp(input, "exit") == 0) // handle exit as command
-			break ;
-		if (_is_empty_input(input) == 1)
+		if (is_empty_input(input) == 1)
 			continue ;
 		exec_input(ctx, input);
-		if (input[0] != '\t' && input[0] != '\n' && input[0] != ' '
-			&& ft_strcmp(prev_input, input) != 0)
-		{
-			add_history(input);
-			free(prev_input);
-			prev_input = input;
-			input = NULL;
-		}
-		else
-		{
-			free(input);
-			input = NULL;
-		}
+		update_history(&input, &prev_input);
 	}
 	free(input);
 	free(prev_input);

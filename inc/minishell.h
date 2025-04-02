@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:11:26 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/02 12:58:33 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/02 20:43:53 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,15 +101,17 @@ enum e_heredoc_reader_loop_status
 	HEREDOC_READER_LOOP_FAILURE,
 };
 
-typedef t_list			t_env_list;
-typedef t_list			t_token_list;
-typedef t_list			t_redir_list;
+extern volatile sig_atomic_t	g_sigint_flag;
 
-typedef struct s_ctx	t_ctx;
-typedef struct s_env	t_env;
-typedef struct s_token	t_token;
-typedef struct s_ast	t_ast;
-typedef struct s_redir	t_redir;
+typedef t_list					t_env_list;
+typedef t_list					t_token_list;
+typedef t_list					t_redir_list;
+
+typedef struct s_ctx			t_ctx;
+typedef struct s_env			t_env;
+typedef struct s_token			t_token;
+typedef struct s_ast			t_ast;
+typedef struct s_redir			t_redir;
 
 struct s_ctx
 {
@@ -246,8 +248,16 @@ t_ast			*parse_token_list_into_ast(
 					t_ctx *ctx, t_token_list *token_list);
 
 // reader/
+// reader/check_sigint_flag.c
+int				check_sigint_flag(void);
+// reader/handle_signal.c
+void			handle_signal(t_ctx *ctx);
+// reader/is_empty_input.c
+int				is_empty_input(char *input);
 // reader/reader_loop.c
 void			reader_loop(t_ctx *ctx);
+// reader/update_history.c
+void			update_history(char **input_p, char **prev_input_p);
 
 // syntax/
 // syntax/current_is_head.c

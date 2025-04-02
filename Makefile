@@ -36,7 +36,11 @@ SRC = \
 					$(SRC_DIR)parse/parse_redir.c \
 					$(SRC_DIR)parse/parse_subshell.c \
 					$(SRC_DIR)parse/parse_token_list_into_ast.c \
+					$(SRC_DIR)reader/check_sigint_flag.c \
+					$(SRC_DIR)reader/handle_signal.c \
+					$(SRC_DIR)reader/is_empty_input.c \
 					$(SRC_DIR)reader/reader_loop.c \
+					$(SRC_DIR)reader/update_history.c \
 					$(SRC_DIR)syntax/check_syntax.c \
 					$(SRC_DIR)syntax/current_is_head.c \
 					$(SRC_DIR)syntax/prev_is_cntlop_pipe_and_or_list_l_parenthese.c \
