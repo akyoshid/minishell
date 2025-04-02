@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 12:56:07 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/03/30 23:50:02 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/02 10:52:11 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,30 +74,6 @@ static t_token_list	*_split_word_core(char *original_word)
 	return (token_list);
 }
 
-static t_token_list	*_handle_new_list_is_null(
-	t_token_list *prev_node, t_token_list *current_node,
-	char *current_node_word_original)
-{
-	int	prev_node_type;
-
-	free(get_token_word(current_node));
-	prev_node_type = get_token_type(prev_node);
-	if (prev_node_type == TOKEN_REDIROP_IN
-		|| prev_node_type == TOKEN_REDIROP_OUT
-		|| prev_node_type == TOKEN_REDIROP_OUT_APPEND)
-	{
-		set_token_word(current_node, current_node_word_original);
-		set_token_type(prev_node, TOKEN_REDIROP_AMBIGUOUS);
-	}
-	else
-	{
-		free(current_node_word_original);
-		set_token_word(current_node, NULL);
-		set_token_type(current_node, TOKEN_NOOP);
-	}
-	return (current_node);
-}
-
 // Return the last token node after the split.
 t_token_list	*split_word(t_token_list **token_list_p,
 	t_token_list *prev_node, t_token_list *current_node,
@@ -105,10 +81,16 @@ t_token_list	*split_word(t_token_list **token_list_p,
 {
 	t_token_list	*new_list;
 	t_token_list	*new_list_last_node;
+	int				prev_node_type;
 
 	new_list = _split_word_core(get_token_word(current_node));
+	prev_node_type = get_token_type(prev_node);
+	if (prev_node_type >= TOKEN_REDIROP_IN
+		&& prev_node_type <= TOKEN_REDIROP_OUT_APPEND)
+		return (handle_prev_node_is_redirop(prev_node, current_node,
+				current_node_word_original, new_list));
 	if (new_list == NULL)
-		return (_handle_new_list_is_null(
+		return (handle_new_list_is_null(
 				prev_node, current_node, current_node_word_original));
 	if (prev_node == NULL)
 		*token_list_p = new_list;

@@ -19,6 +19,8 @@ SRC = \
 					$(SRC_DIR)env/search_env_x.c \
 					$(SRC_DIR)expansion/expand_env_in_token_list.c \
 					$(SRC_DIR)expansion/expand_env.c \
+					$(SRC_DIR)expansion/handle_new_list_is_null.c \
+					$(SRC_DIR)expansion/handle_prev_node_is_redirop.c \
 					$(SRC_DIR)expansion/is_avail_char_for_var_name.c \
 					$(SRC_DIR)expansion/perform_expansion.c \
 					$(SRC_DIR)expansion/remove_quote.c \
@@ -42,6 +44,7 @@ SRC = \
 					$(SRC_DIR)syntax/prev_is_word.c \
 					$(SRC_DIR)syntax/print_syntax_error.c \
 					$(SRC_DIR)token/clear_token_x.c \
+					$(SRC_DIR)token/count_token_node.c \
 					$(SRC_DIR)token/create_op_token_node.c \
 					$(SRC_DIR)token/create_token_list.c \
 					$(SRC_DIR)token/create_word_token_node.c \

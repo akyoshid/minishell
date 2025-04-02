@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:11:26 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/01 12:17:19 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/02 10:53:28 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,6 +198,14 @@ void			expand_env_in_token_list(
 // expansion/expand_env.c
 void			expand_env_core(t_ctx *ctx, char **word_p, int *i_p);
 void			expand_env(t_ctx *ctx, char **word_p);
+// expansion/handle_new_list_is_null.c
+t_token_list	*handle_new_list_is_null(
+					t_token_list *prev_node, t_token_list *current_node,
+					char *current_node_word_original);
+// expansion/handle_prev_node_is_redirop.c
+t_token_list	*handle_prev_node_is_redirop(
+					t_token_list *prev_node, t_token_list *current_node,
+					char *current_node_word_original, t_token_list *new_list);
 // expansion/is_avail_char_for_var_name.c
 int				is_avail_char_for_var_name(int c);
 // expansion/perform_expansion.c
@@ -260,6 +268,8 @@ void			print_syntax_error(int current_token_type, char *token_word);
 void			clear_token_node_content(void *void_content);
 void			clear_token_node(t_token_list *token_node);
 void			clear_token_list(t_token_list **token_list);
+// token/count_token_node.c
+int				count_token_node(t_token_list *token_list);
 // token/create_op_token_node.c
 t_token_list	*create_op_token_node(char **input_p);
 // token/create_token_list.c
