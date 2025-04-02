@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 17:05:23 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/01 14:21:43 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/02 23:53:57 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_list	*ft_xlstnew(void *content)
 	if (temp == NULL)
 	{
 		print_error("malloc", "cannot allocate memory", NULL, false);
-		exit(EXIT_USAGE);
+		exit(EXIT_FAILURE);
 	}
 	return (temp);
 }

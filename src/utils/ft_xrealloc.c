@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 09:47:14 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/01 14:21:54 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/02 23:54:02 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	*ft_xrealloc(void *ptr, size_t old_size, size_t new_size)
 	if (temp == NULL)
 	{
 		print_error("malloc", "cannot allocate memory", NULL, false);
-		exit(EXIT_USAGE);
+		exit(EXIT_FAILURE);
 	}
 	return (temp);
 }

@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 13:49:08 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/01 14:24:22 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/02 23:54:16 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*xmalloc(size_t size)
 	{
 		ft_dprintf(STDERR_FILENO,
 			"minishell: malloc: cannot allocate %zu bytes\n", size);
-		exit(EXIT_USAGE);
+		exit(EXIT_FAILURE);
 	}
 	return (temp);
 }
