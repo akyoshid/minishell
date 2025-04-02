@@ -6,16 +6,15 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 18:03:48 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/02 20:25:36 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/02 21:10:21 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-static void	_set_up_sigint_flag(int signum)
+static void	_set_signum(int signum)
 {
-	g_sigint_flag = true;
-	(void)signum;
+	g_signum = signum;
 }
 
 static void	_set_sigaction(int signum, void (*handler)(int))
@@ -34,11 +33,11 @@ static void	_set_sigaction(int signum, void (*handler)(int))
 // Ctrl-\ -> SIGQUIT
 void	handle_signal(t_ctx *ctx)
 {
-	if (g_sigint_flag == true)
+	if (g_signum != 0)
 	{
-		g_sigint_flag = false;
-		ctx->exit_status = 128 + SIGINT;
+		ctx->exit_status = 128 + g_signum;
+		g_signum = 0;
 	}
-	_set_sigaction(SIGINT, _set_up_sigint_flag);
+	_set_sigaction(SIGINT, _set_signum);
 	_set_sigaction(SIGQUIT, SIG_IGN);
 }

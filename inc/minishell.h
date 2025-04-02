@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:11:26 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/02 20:43:53 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/02 21:10:33 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ enum e_heredoc_reader_loop_status
 	HEREDOC_READER_LOOP_FAILURE,
 };
 
-extern volatile sig_atomic_t	g_sigint_flag;
+extern volatile sig_atomic_t	g_signum;
 
 typedef t_list					t_env_list;
 typedef t_list					t_token_list;
@@ -248,8 +248,8 @@ t_ast			*parse_token_list_into_ast(
 					t_ctx *ctx, t_token_list *token_list);
 
 // reader/
-// reader/check_sigint_flag.c
-int				check_sigint_flag(void);
+// reader/check_g_signum.c
+int				check_g_signum(void);
 // reader/handle_signal.c
 void			handle_signal(t_ctx *ctx);
 // reader/is_empty_input.c

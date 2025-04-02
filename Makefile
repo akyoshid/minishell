@@ -36,7 +36,7 @@ SRC = \
 					$(SRC_DIR)parse/parse_redir.c \
 					$(SRC_DIR)parse/parse_subshell.c \
 					$(SRC_DIR)parse/parse_token_list_into_ast.c \
-					$(SRC_DIR)reader/check_sigint_flag.c \
+					$(SRC_DIR)reader/check_g_signum.c \
 					$(SRC_DIR)reader/handle_signal.c \
 					$(SRC_DIR)reader/is_empty_input.c \
 					$(SRC_DIR)reader/reader_loop.c \

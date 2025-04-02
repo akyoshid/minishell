@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_sigint_flag.c                                :+:      :+:    :+:   */
+/*   check_g_signum.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 18:59:18 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/02 20:20:29 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/02 21:08:16 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-int	check_sigint_flag(void)
+int	check_g_signum(void)
 {
-	if (g_sigint_flag == true)
+	if (g_signum == SIGINT)
 	{
 		rl_replace_line("", 0);
 		rl_on_new_line();

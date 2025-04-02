@@ -6,13 +6,13 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 12:56:14 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/02 20:44:09 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/02 21:07:48 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-volatile sig_atomic_t	g_sigint_flag = false;
+volatile sig_atomic_t	g_signum = 0;
 
 void	exec_input(t_ctx *ctx, char *input)
 {
@@ -42,7 +42,7 @@ void	reader_loop(t_ctx *ctx)
 	input = NULL;
 	prev_input = NULL;
 	rl_outstream = stderr;
-	rl_event_hook = check_sigint_flag;
+	rl_event_hook = check_g_signum;
 	while (1)
 	{
 		handle_signal(ctx);
