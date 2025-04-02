@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:11:26 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/02 10:53:28 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/02 12:58:33 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -244,6 +244,10 @@ t_ast			*parse_subshell(
 // parse/parse_token_list_into_ast.c
 t_ast			*parse_token_list_into_ast(
 					t_ctx *ctx, t_token_list *token_list);
+
+// reader/
+// reader/reader_loop.c
+void			reader_loop(t_ctx *ctx);
 
 // syntax/
 // syntax/current_is_head.c
