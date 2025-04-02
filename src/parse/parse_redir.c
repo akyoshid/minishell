@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/30 21:01:02 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/01 11:54:27 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/02 08:29:37 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_redir_list	*parse_redir(t_ctx *ctx, t_token_list **current_token_node_p)
 	content->word = ft_xstrdup(get_token_word(*current_token_node_p));
 	*current_token_node_p = (*current_token_node_p)->next;
 	if (token_type >= TOKEN_REDIROP_IN_HEREDOC
-		|| token_type <= TOKEN_REDIROP_IN_HEREDOC_DEL_TAB_NO_EXPAND)
+		&& token_type <= TOKEN_REDIROP_IN_HEREDOC_DEL_TAB_NO_EXPAND)
 	{
 		if (perform_heredoc(ctx, content, token_type) != 0)
 			return (free(content->word), free(content), NULL);
