@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:11:26 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/02 23:45:10 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/04 01:14:28 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,6 +172,13 @@ void			clear_ast(t_ast *ast);
 // ast/get_redir_x.c
 int				get_redir_type(t_redir_list *redir_node);
 char			*get_redir_word(t_redir_list *redir_node);
+// ast/print_ast_visual_utils.c
+void			print_node_type(t_ast *ast_node);
+void			print_args(t_ast *ast_node, const char *prefix);
+void			print_redir_one(t_redir_list *redir, const char *prefix);
+void			print_redirections(t_ast *ast_node, const char *prefix);
+// ast/print_ast_visual.c
+void			print_ast_visual(t_ast *ast);
 // ast/print_ast.c
 void			print_ast(t_ast *ast);
 

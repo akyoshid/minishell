@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 12:56:14 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/02 22:37:40 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/04 00:42:58 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	exec_input(t_ctx *ctx, char *input)
 	}
 	clear_token_list(&token_list);
 	print_ast(ast);
+	print_ast_visual(ast);
 	clear_ast(ast);
 	// exec_ast
 }

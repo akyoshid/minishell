@@ -10,6 +10,8 @@ INC =				$(INC_DIR)minishell.h
 SRC = \
 					$(SRC_DIR)ast/clear_ast.c \
 					$(SRC_DIR)ast/get_redir_x.c \
+					$(SRC_DIR)ast/print_ast_visual_utils.c \
+					$(SRC_DIR)ast/print_ast_visual.c \
 					$(SRC_DIR)ast/print_ast.c \
 					$(SRC_DIR)env/clear_env_x.c \
 					$(SRC_DIR)env/create_env_x.c \
