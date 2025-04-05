@@ -70,6 +70,7 @@ SRC = \
 					$(SRC_DIR)utils/ft_xstrtrim.c \
 					$(SRC_DIR)utils/is_ifs.c \
 					$(SRC_DIR)utils/print_error.c \
+					$(SRC_DIR)utils/std_io.c \
 					$(SRC_DIR)utils/xmalloc.c \
 					$(SRC_DIR)main.c
 

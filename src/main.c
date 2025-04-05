@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:13:06 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/02 12:57:03 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/04 05:37:37 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,13 @@ static void	_init_ctx(t_ctx *ctx, char **envp)
 {
 	init_env_list(envp, ctx);
 	ctx->exit_status = EXIT_SUCCESS;
+	dup_std_io(ctx);
 }
 
 static void	_clear_ctx(t_ctx *ctx)
 {
 	clear_env_list(&ctx->env_list);
+	close_std_io_dup(ctx);
 }
 
 int	main(int argc, char **argv, char **envp)

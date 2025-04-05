@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:11:26 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/04 01:14:28 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/04 05:38:03 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,7 @@ struct s_ctx
 {
 	t_env_list	*env_list;
 	int			exit_status;
+	int			std_io_dup[3];
 };
 
 struct s_env
@@ -333,6 +334,10 @@ char			*ft_xstrtrim(const char *s1, const char *set);
 int				is_ifs(char c);
 // utils/print_error.c
 void			print_error(char *mes1, char *mes2, char *mes3, bool use_errno);
+// utils/std_io.c
+void			dup_std_io(t_ctx *ctx);
+void			close_std_io_dup(t_ctx *ctx);
+int				restore_std_io(t_ctx *ctx);
 // utils/xmalloc.c
 void			*xmalloc(size_t size);
 
