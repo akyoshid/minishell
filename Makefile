@@ -64,6 +64,7 @@ SRC = \
 					$(SRC_DIR)utils/ft_xcalloc.c \
 					$(SRC_DIR)utils/ft_xlstnew.c \
 					$(SRC_DIR)utils/ft_xrealloc.c \
+					$(SRC_DIR)utils/ft_xsplit.c \
 					$(SRC_DIR)utils/ft_xstrdup.c \
 					$(SRC_DIR)utils/ft_xstrjoin.c \
 					$(SRC_DIR)utils/ft_xstrndup.c \

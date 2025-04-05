@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:11:26 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/04 05:38:03 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/04 23:22:29 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,6 +183,10 @@ void			print_ast_visual(t_ast *ast);
 // ast/print_ast.c
 void			print_ast(t_ast *ast);
 
+// exec/
+// exec/setup_redir.c
+int				setup_redir(t_ctx *ctx, t_redir_list *redir_list);
+
 // env/
 // env/clear_env_x.c
 void			clear_env_node_content(void *void_content);
@@ -322,6 +326,8 @@ void			*ft_xcalloc(size_t count, size_t size);
 t_list			*ft_xlstnew(void *content);
 // utils/ft_xrealloc.c
 void			*ft_xrealloc(void *ptr, size_t old_size, size_t new_size);
+// utils/ft_xsplit.c
+char			**ft_xsplit(char const *s, char c);
 // utils/ft_xstrdup.c
 char			*ft_xstrdup(const char *s1);
 // utils/ft_xstrjoin.c
