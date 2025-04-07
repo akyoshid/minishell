@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:11:26 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/04 23:22:29 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/07 14:15:08 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -320,6 +320,8 @@ void			set_token_type(t_token_list *token_node, int type);
 void			set_token_word(t_token_list *token_node, char *word);
 
 // utils/
+// utils/free_2d_array.c
+void			free_2d_array(char **ptr);
 // utils/ft_xcalloc.c
 void			*ft_xcalloc(size_t count, size_t size);
 // utils/ft_xlstnew.c
