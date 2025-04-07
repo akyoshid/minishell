@@ -34,7 +34,7 @@
 
 # define EXIT_USAGE		2
 # define EXIT_NOTEXEC	126
-# define EX_NOTFOUND	127
+# define EXIT_NOTFOUND	127
 # define NO_TOKEN		-1
 
 enum e_char_type
