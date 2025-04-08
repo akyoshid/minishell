@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:11:26 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/08 03:25:26 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/08 03:28:01 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,12 +183,6 @@ void			print_ast_visual(t_ast *ast);
 // ast/print_ast.c
 void			print_ast(t_ast *ast);
 
-// exec/
-// exec/get_path.c
-char			*get_path(t_ctx *ctx, char *cmd);
-// exec/setup_redir.c
-int				setup_redir(t_ctx *ctx, t_redir_list *redir_list);
-
 // env/
 // env/clear_env_x.c
 void			clear_env_node_content(void *void_content);
@@ -196,6 +190,8 @@ void			clear_env_list(t_env_list **env_list);
 // env/create_env_x.c
 t_env_list		*create_env_node(char *key, char *value);
 t_env_list		*create_env_list(char **envp);
+// env/create_envp.c
+char			**create_envp(t_ctx *ctx);
 // env/get_env_x.c
 char			*get_env_key(t_env_list *env_node);
 char			*get_env_value(t_env_list *env_node);
@@ -206,6 +202,12 @@ void			print_env_list(t_env_list *env_list);
 // env/search_env_x.c
 char			*search_env_value(t_env_list *env_list, char *key);
 t_env_list		*search_env_node(t_env_list *env_list, char *key);
+
+// exec/
+// exec/get_path.c
+char			*get_path(t_ctx *ctx, char *cmd);
+// exec/setup_redir.c
+int				setup_redir(t_ctx *ctx, t_redir_list *redir_list);
 
 // expansion
 // expansion/expand_env_in_token_list.c
