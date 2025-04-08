@@ -6,13 +6,13 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 20:38:00 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/03/19 20:44:50 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/08 14:15:57 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-char	*search_env_value(t_env_list *env_list, char *key)
+char	*search_env_value(t_ctx *ctx, t_env_list *env_list, char *key)
 {
 	t_env_list	*current_node;
 
@@ -23,6 +23,8 @@ char	*search_env_value(t_env_list *env_list, char *key)
 			return (get_env_value(current_node));
 		current_node = current_node->next;
 	}
+	if (ft_strcmp("?", key) == 0)
+		return (ft_xitoa(ctx->exit_status));
 	return (NULL);
 }
 

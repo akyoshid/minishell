@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 12:56:14 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/08 07:05:36 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/08 14:48:26 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ void	reader_loop(t_ctx *ctx)
 		}
 		if (is_empty_input(input) == 1)
 			continue ;
-		ctx->exit_status = 0;
 		exec_input(ctx, input);
 		update_history(&input, &prev_input);
 	}

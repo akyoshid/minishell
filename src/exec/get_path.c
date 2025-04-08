@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 07:57:08 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/07 15:35:32 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/08 14:21:08 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ char	*get_path(t_ctx *ctx, char *cmd)
 
 	if (ft_strchr(cmd, '/') != NULL)
 		return (_get_path_cmd_is_path(ctx, cmd));
-	env_path_value = search_env_value(ctx->env_list, "PATH");
+	env_path_value = search_env_value(ctx, ctx->env_list, "PATH");
 	if (env_path_value == NULL || env_path_value[0] == '\0')
 		return (_get_path_env_path_is_empty(ctx, cmd));
 	else

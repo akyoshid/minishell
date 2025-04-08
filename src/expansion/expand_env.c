@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 16:52:23 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/01 11:27:21 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/08 14:21:53 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	_replace_key_to_value(
 	char	*new_word;
 
 	var_key = ft_xstrndup(*word_p + *i_p + 1, var_key_len);
-	var_value = search_env_value(ctx->env_list, var_key);
+	var_value = search_env_value(ctx, ctx->env_list, var_key);
 	if (var_value == NULL)
 		var_value = "";
 	var_value_len = ft_strlen(var_value);
@@ -32,6 +32,8 @@ static void	_replace_key_to_value(
 	ft_strcpy(
 		new_word + *i_p + var_value_len, *word_p + *i_p + 1 + var_key_len);
 	*i_p = *i_p + var_value_len;
+	if (ft_strcmp("?", var_key) == 0)
+		free(var_value);
 	free(var_key);
 	free(*word_p);
 	*word_p = new_word;
@@ -48,6 +50,8 @@ void	expand_env_core(t_ctx *ctx, char **word_p, int *i_p)
 		if (var_key_len == 1 && ft_isdigit((*word_p)[*i_p + 1]) == 1)
 			break ;
 	}
+	if (var_key_len == 0 && (*word_p)[*i_p + 1] == '?')
+		var_key_len++;
 	if (var_key_len == 0)
 		(*i_p)++;
 	else

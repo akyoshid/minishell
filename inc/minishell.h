@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:11:26 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/08 13:16:46 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/08 14:18:23 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,7 +205,7 @@ void			init_env_list(char **envp, t_ctx *ctx);
 // env/print_env_list.c
 void			print_env_list(t_env_list *env_list);
 // env/search_env_x.c
-char			*search_env_value(t_env_list *env_list, char *key);
+char			*search_env_value(t_ctx *ctx, t_env_list *env_list, char *key);
 t_env_list		*search_env_node(t_env_list *env_list, char *key);
 
 // exec/
