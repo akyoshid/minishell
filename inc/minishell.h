@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:11:26 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/08 11:39:47 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/08 13:16:46 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -250,8 +250,6 @@ t_token_list	*split_word(t_token_list **token_list_p,
 					char *current_node_word_original);
 
 // heredoc/
-// heredoc/check_g_signum_in_heredoc.c
-int				check_g_signum_in_heredoc(void);
 // heredoc/cmp_delimiter.c
 int				cmp_delimiter(char *delimiter, char *new_line);
 // heredoc/delete_tab.c
@@ -260,9 +258,6 @@ void			delete_tab(char *new_line);
 void			expand_env_heredoc(t_ctx *ctx, char **new_line_p);
 // heredoc/get_heredoc_path.c
 char			*get_heredoc_path(void);
-// heredoc/handle_signal_in_heredoc.c
-int				handle_signal_in_heredoc(t_ctx *ctx,
-					t_token_list **current_token_node_p, char *input);
 // heredoc/perform_heredoc.c
 int				perform_heredoc(t_ctx *ctx, t_redir *content,
 					int token_type, t_token_list **current_token_node_p);
@@ -284,16 +279,26 @@ t_ast			*parse_token_list_into_ast(
 					t_ctx *ctx, t_token_list *token_list);
 
 // reader/
-// reader/check_g_signum.c
-int				check_g_signum(void);
-// reader/handle_signal.c
-void			handle_signal(t_ctx *ctx);
 // reader/is_empty_input.c
 int				is_empty_input(char *input);
 // reader/reader_loop.c
 void			reader_loop(t_ctx *ctx);
 // reader/update_history.c
 void			update_history(char **input_p, char **prev_input_p);
+
+// signal
+// signal/check_g_signum_in_heredoc.c
+int				check_g_signum_in_heredoc(void);
+// signal/check_g_signum.c
+int				check_g_signum(void);
+// signal/handle_signal_in_heredoc.c
+int				handle_signal_in_heredoc(t_ctx *ctx,
+					t_token_list **current_token_node_p, char *input);
+// signal/handle_signal.c
+void			handle_signal(t_ctx *ctx);
+void			reset_signal_handler(void);
+// signal/init_sig_list.c
+void			init_sig_list(t_ctx *ctx);
 
 // syntax/
 // syntax/current_is_head.c
@@ -356,8 +361,6 @@ char			*ft_xstrjoin(char const *s1, char const *s2);
 char			*ft_xstrndup(const char *s1, size_t n);
 // utils/ft_xstrtrim.c
 char			*ft_xstrtrim(const char *s1, const char *set);
-// utils/init_sig_list.c
-void			init_sig_list(t_ctx *ctx);
 // utils/is_ifs.c
 int				is_ifs(char c);
 // utils/print_error.c

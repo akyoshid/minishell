@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 18:03:48 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/02 21:10:21 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/08 13:16:52 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,10 @@ void	handle_signal(t_ctx *ctx)
 	}
 	_set_sigaction(SIGINT, _set_signum);
 	_set_sigaction(SIGQUIT, SIG_IGN);
+}
+
+void	reset_signal_handler(void)
+{
+	_set_sigaction(SIGINT, SIG_DFL);
+	_set_sigaction(SIGQUIT, SIG_DFL);
 }
