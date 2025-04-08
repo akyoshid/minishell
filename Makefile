@@ -19,7 +19,8 @@ SRC = \
 					$(SRC_DIR)env/init_env_list.c \
 					$(SRC_DIR)env/print_env_list.c \
 					$(SRC_DIR)env/search_env_x.c \
-					$(SRC_DIR)env/setup_redir.c \
+					$(SRC_DIR)exec/get_path.c \
+					$(SRC_DIR)exec/setup_redir.c \
 					$(SRC_DIR)expansion/expand_env_in_token_list.c \
 					$(SRC_DIR)expansion/expand_env.c \
 					$(SRC_DIR)expansion/handle_new_list_is_null.c \

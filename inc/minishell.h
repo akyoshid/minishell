@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:11:26 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/07 14:15:08 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/08 03:25:26 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,6 +184,8 @@ void			print_ast_visual(t_ast *ast);
 void			print_ast(t_ast *ast);
 
 // exec/
+// exec/get_path.c
+char			*get_path(t_ctx *ctx, char *cmd);
 // exec/setup_redir.c
 int				setup_redir(t_ctx *ctx, t_redir_list *redir_list);
 
