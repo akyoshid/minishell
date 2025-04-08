@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:11:26 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/08 06:22:08 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/08 07:02:17 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,6 +205,12 @@ char			*search_env_value(t_env_list *env_list, char *key);
 t_env_list		*search_env_node(t_env_list *env_list, char *key);
 
 // exec/
+// exec/exec_ast.c
+void			exec_ast(t_ctx *ctx, t_ast *ast_top_node);
+// exec/exec_command.c
+void			exec_command(t_ctx *ctx, t_ast *ast_node);
+// exec/exec_external_command.c
+void			exec_external_command(t_ctx *ctx, t_ast *ast_node);
 // exec/get_path.c
 char			*get_path(t_ctx *ctx, char *cmd);
 // exec/setup_redir.c
