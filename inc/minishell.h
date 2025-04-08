@@ -347,6 +347,8 @@ void			set_token_word(t_token_list *token_node, char *word);
 void			free_2d_array(char **ptr);
 // utils/ft_xcalloc.c
 void			*ft_xcalloc(size_t count, size_t size);
+// utils/ft_xitoa.c
+char			*ft_xitoa(int n);
 // utils/ft_xlstnew.c
 t_list			*ft_xlstnew(void *content);
 // utils/ft_xrealloc.c

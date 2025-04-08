@@ -72,6 +72,7 @@ SRC = \
 					$(SRC_DIR)token/set_token_x.c \
 					$(SRC_DIR)utils/free_2d_array.c \
 					$(SRC_DIR)utils/ft_xcalloc.c \
+					$(SRC_DIR)utils/ft_xitoa.c \
 					$(SRC_DIR)utils/ft_xlstnew.c \
 					$(SRC_DIR)utils/ft_xrealloc.c \
 					$(SRC_DIR)utils/ft_xsplit.c \
