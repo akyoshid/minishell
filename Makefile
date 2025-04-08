@@ -13,6 +13,7 @@ SRC = \
 					$(SRC_DIR)ast/print_ast_visual_utils.c \
 					$(SRC_DIR)ast/print_ast_visual.c \
 					$(SRC_DIR)ast/print_ast.c \
+					$(SRC_DIR)builtin/echo.c \
 					$(SRC_DIR)env/clear_env_x.c \
 					$(SRC_DIR)env/create_env_x.c \
 					$(SRC_DIR)env/create_envp.c \
@@ -21,6 +22,7 @@ SRC = \
 					$(SRC_DIR)env/print_env_list.c \
 					$(SRC_DIR)env/search_env_x.c \
 					$(SRC_DIR)exec/exec_ast.c \
+					$(SRC_DIR)exec/exec_builtin_command.c \
 					$(SRC_DIR)exec/exec_command.c \
 					$(SRC_DIR)exec/exec_external_command.c \
 					$(SRC_DIR)exec/get_path.c \

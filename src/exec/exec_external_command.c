@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 04:02:48 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/08 06:58:24 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/08 12:13:06 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,15 @@ static void	_run_in_parent(t_ctx *ctx, pid_t pid)
 	int	status;
 	int	signum;
 
-	restore_std_io(ctx);
 	if (waitpid(pid, &status, 0) == -1)
 	{
+		restore_std_io(ctx);
 		print_error("waitpid", NULL, NULL, true);
 		ctx->exit_status = EXIT_FAILURE;
 	}
 	else
 	{
+		restore_std_io(ctx);
 		if (WIFEXITED(status))
 			ctx->exit_status = WEXITSTATUS(status);
 		else if (WIFSIGNALED(status))
@@ -49,8 +50,6 @@ static void	_run_in_parent(t_ctx *ctx, pid_t pid)
 				ft_dprintf(STDERR_FILENO, "%s\n", ctx->sig_list[signum]);
 			ctx->exit_status = 128 + signum;
 		}
-		else
-			ctx->exit_status = EXIT_FAILURE;
 	}
 }
 
