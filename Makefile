@@ -73,6 +73,7 @@ SRC = \
 					$(SRC_DIR)utils/ft_xstrjoin.c \
 					$(SRC_DIR)utils/ft_xstrndup.c \
 					$(SRC_DIR)utils/ft_xstrtrim.c \
+					$(SRC_DIR)utils/init_sig_list.c \
 					$(SRC_DIR)utils/is_ifs.c \
 					$(SRC_DIR)utils/print_error.c \
 					$(SRC_DIR)utils/std_io.c \

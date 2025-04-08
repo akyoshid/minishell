@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:11:26 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/08 03:28:01 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/08 06:22:08 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,7 @@ struct s_ctx
 	t_env_list	*env_list;
 	int			exit_status;
 	int			std_io_dup[3];
+	char		*sig_list[NSIG];
 };
 
 struct s_env
@@ -342,6 +343,8 @@ char			*ft_xstrjoin(char const *s1, char const *s2);
 char			*ft_xstrndup(const char *s1, size_t n);
 // utils/ft_xstrtrim.c
 char			*ft_xstrtrim(const char *s1, const char *set);
+// utils/init_sig_list.c
+void			init_sig_list(t_ctx *ctx);
 // utils/is_ifs.c
 int				is_ifs(char c);
 // utils/print_error.c
