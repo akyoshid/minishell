@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:11:26 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/08 14:18:23 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/09 19:40:20 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,11 @@
 # define EXIT_USAGE		2
 # define EXIT_NOTEXEC	126
 # define EXIT_NOTFOUND	127
+
 # define NO_TOKEN		-1
+
+# define PIPE_READ		0
+# define PIPE_WRITE		1
 
 enum e_char_type
 {
@@ -165,6 +169,13 @@ typedef struct s_heredoc_info
 	int		fd;
 }			t_heredoc_info;
 
+typedef struct s_pipe_fd_set
+{
+	int	current_read;
+	int	current_write;
+	int	next_read;
+}		t_pipe_fd_set;
+
 // ast/
 // ast/clear_ast.c
 void			clear_cmd_args(char **cmd_args);
@@ -214,10 +225,23 @@ void			exec_ast(t_ctx *ctx, t_ast *ast_top_node);
 // exec/exec_builtin_command.c
 int				check_cmd_is_builtin(char *cmd);
 void			exec_builtin_command(t_ctx *ctx, char **cmd_args);
+// exec/exec_command_in_pipe.c
+pid_t			exec_command_in_pipe(
+					t_ctx *ctx, t_ast *ast_node, t_pipe_fd_set *pipe_fd_set);
 // exec/exec_command.c
 void			exec_command(t_ctx *ctx, t_ast *ast_node);
 // exec/exec_external_command.c
+void			wait_child(t_ctx *ctx, pid_t pid);
 void			exec_external_command(t_ctx *ctx, t_ast *ast_node);
+void			exec_external_command_in_pipe(t_ctx *ctx, t_ast *ast_node);
+// exec/exec_pipe_utils.c
+void			init_pipe_fd_set(t_pipe_fd_set *pipe_fd_set);
+t_pipe_fd_set	*update_pipe_fd_set(t_pipe_fd_set *pipe_fd_set, int pipe_fd[2]);
+void			close_pipe_fd(int pipe_fd);
+void			close_current_pipe_fd_set(t_pipe_fd_set *pipe_fd_set);
+void			close_pipe_fd_set(t_pipe_fd_set *pipe_fd_set);
+// exec/exec_pipe.c
+void			exec_pipe(t_ctx *ctx, t_ast *ast_node);
 // exec/get_path.c
 char			*get_path(t_ctx *ctx, char *cmd);
 // exec/setup_redir.c

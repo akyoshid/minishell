@@ -23,8 +23,11 @@ SRC = \
 					$(SRC_DIR)env/search_env_x.c \
 					$(SRC_DIR)exec/exec_ast.c \
 					$(SRC_DIR)exec/exec_builtin_command.c \
+					$(SRC_DIR)exec/exec_command_in_pipe.c \
 					$(SRC_DIR)exec/exec_command.c \
 					$(SRC_DIR)exec/exec_external_command.c \
+					$(SRC_DIR)exec/exec_pipe_utils.c \
+					$(SRC_DIR)exec/exec_pipe.c \
 					$(SRC_DIR)exec/get_path.c \
 					$(SRC_DIR)exec/setup_redir.c \
 					$(SRC_DIR)expansion/expand_env_in_token_list.c \
