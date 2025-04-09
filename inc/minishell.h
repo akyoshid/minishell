@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:11:26 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/09 19:40:20 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/09 21:57:33 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -272,6 +272,12 @@ void			remove_quote(t_token_list *token_list);
 t_token_list	*split_word(t_token_list **token_list_p,
 					t_token_list *prev_node, t_token_list *current_node,
 					char *current_node_word_original);
+
+// fcntl
+// fcntl/w_close.c
+int				w_close(int fd);
+// fcntl/w_dup2.c
+int				w_dup2(int oldfd, int newfd);
 
 // heredoc/
 // heredoc/cmp_delimiter.c

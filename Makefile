@@ -38,6 +38,8 @@ SRC = \
 					$(SRC_DIR)expansion/perform_expansion.c \
 					$(SRC_DIR)expansion/remove_quote.c \
 					$(SRC_DIR)expansion/split_word.c \
+					$(SRC_DIR)fcntl/w_close.c \
+					$(SRC_DIR)fcntl/w_dup2.c \
 					$(SRC_DIR)heredoc/cmp_delimiter.c \
 					$(SRC_DIR)heredoc/delete_tab.c \
 					$(SRC_DIR)heredoc/expand_env_heredoc.c \
@@ -121,7 +123,9 @@ fclean: clean
 re: fclean all
 
 val:
-	valgrind --leak-check=full --leak-check=full --show-leak-kinds=all \
+	valgrind --leak-check=full --leak-check=full \
+	--show-leak-kinds=definite,indirect,possible \
+	--track-fds=yes \
 	--suppressions=valgrind.supp ./minishell
 
 .PHONY: all clean fclean re bonus val
