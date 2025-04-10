@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:11:26 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/09 21:57:33 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/10 08:48:24 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -224,7 +224,7 @@ t_env_list		*search_env_node(t_env_list *env_list, char *key);
 void			exec_ast(t_ctx *ctx, t_ast *ast_top_node);
 // exec/exec_builtin_command.c
 int				check_cmd_is_builtin(char *cmd);
-void			exec_builtin_command(t_ctx *ctx, char **cmd_args);
+void			exec_builtin_command(t_ctx *ctx, t_ast *ast_node);
 // exec/exec_command_in_pipe.c
 pid_t			exec_command_in_pipe(
 					t_ctx *ctx, t_ast *ast_node, t_pipe_fd_set *pipe_fd_set);
@@ -398,9 +398,10 @@ int				is_ifs(char c);
 // utils/print_error.c
 void			print_error(char *mes1, char *mes2, char *mes3, bool use_errno);
 // utils/std_io.c
-void			dup_std_io(t_ctx *ctx);
+void			init_std_io_dup(t_ctx *ctx);
 void			close_std_io_dup(t_ctx *ctx);
-int				restore_std_io(t_ctx *ctx);
+void			dup_std_io(t_ctx *ctx);
+void			restore_std_io(t_ctx *ctx);
 // utils/xmalloc.c
 void			*xmalloc(size_t size);
 

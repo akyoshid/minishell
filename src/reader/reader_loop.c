@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 12:56:14 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/08 14:48:26 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/09 20:26:31 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void	exec_input(t_ctx *ctx, char *input)
 	// print_ast_visual(ast);
 	exec_ast(ctx, ast);
 	clear_ast(ast);
-	// restore_std_io(ctx);
 }
 
 void	reader_loop(t_ctx *ctx)

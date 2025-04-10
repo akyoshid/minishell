@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 14:48:31 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/09 17:44:31 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/10 08:51:02 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,13 @@ static int	_setup_pipe(t_pipe_fd_set *pipe_fd_set)
 	if (dup2(pipe_fd_set->current_read, STDIN_FILENO) == -1)
 	{
 		print_error("dup2", NULL, NULL, true);
+		close_pipe_fd_set(pipe_fd_set);
 		return (-1);
 	}
 	if (dup2(pipe_fd_set->current_write, STDOUT_FILENO) == -1)
 	{
 		print_error("dup2", NULL, NULL, true);
+		close_pipe_fd_set(pipe_fd_set);
 		return (-1);
 	}
 	close_pipe_fd_set(pipe_fd_set);
@@ -49,7 +51,7 @@ static void	_run_in_child(
 			exit(EXIT_SUCCESS);
 		if (check_cmd_is_builtin(ast_node->cmd_args[0]))
 		{
-			exec_builtin_command(ctx, ast_node->cmd_args);
+			exec_builtin_command(ctx, ast_node);
 			exit(ctx->exit_status);
 		}
 		else

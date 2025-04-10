@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 04:02:48 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/09 17:46:57 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/10 08:36:01 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,12 @@ void	wait_child(t_ctx *ctx, pid_t pid)
 	if (waitpid(pid, &status, 0) == -1)
 	{
 		handle_signal(ctx);
-		restore_std_io(ctx);
 		print_error("waitpid", NULL, NULL, true);
 		ctx->exit_status = EXIT_FAILURE;
 	}
 	else
 	{
 		handle_signal(ctx);
-		restore_std_io(ctx);
 		if (WIFEXITED(status))
 			ctx->exit_status = WEXITSTATUS(status);
 		else if (WIFSIGNALED(status))
