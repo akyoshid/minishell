@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:11:26 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/10 08:48:24 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/10 17:22:01 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -234,18 +234,10 @@ void			exec_command(t_ctx *ctx, t_ast *ast_node);
 void			wait_child(t_ctx *ctx, pid_t pid);
 void			exec_external_command(t_ctx *ctx, t_ast *ast_node);
 void			exec_external_command_in_pipe(t_ctx *ctx, t_ast *ast_node);
-// exec/exec_pipe_utils.c
-void			init_pipe_fd_set(t_pipe_fd_set *pipe_fd_set);
-t_pipe_fd_set	*update_pipe_fd_set(t_pipe_fd_set *pipe_fd_set, int pipe_fd[2]);
-void			close_pipe_fd(int pipe_fd);
-void			close_current_pipe_fd_set(t_pipe_fd_set *pipe_fd_set);
-void			close_pipe_fd_set(t_pipe_fd_set *pipe_fd_set);
 // exec/exec_pipe.c
 void			exec_pipe(t_ctx *ctx, t_ast *ast_node);
 // exec/get_path.c
 char			*get_path(t_ctx *ctx, char *cmd);
-// exec/setup_redir.c
-int				setup_redir(t_ctx *ctx, t_redir_list *redir_list);
 
 // expansion
 // expansion/expand_env_in_token_list.c
@@ -274,6 +266,21 @@ t_token_list	*split_word(t_token_list **token_list_p,
 					char *current_node_word_original);
 
 // fcntl
+// fcntl/manage_pipe_fd.c
+void			init_pipe_fd_set(t_pipe_fd_set *pipe_fd_set);
+t_pipe_fd_set	*update_pipe_fd_set(t_pipe_fd_set *pipe_fd_set, int pipe_fd[2]);
+void			close_pipe_fd(int pipe_fd);
+void			close_current_pipe_fd_set(t_pipe_fd_set *pipe_fd_set);
+void			close_pipe_fd_set(t_pipe_fd_set *pipe_fd_set);
+// fcntl/manage_std_io.c
+void			init_std_io_dup(t_ctx *ctx);
+void			close_std_io_dup(t_ctx *ctx);
+void			dup_std_io(t_ctx *ctx);
+void			restore_std_io(t_ctx *ctx);
+// fcntl/setup_pipe.c
+int				setup_pipe(t_pipe_fd_set *pipe_fd_set);
+// fcntl/setup_redir.c
+int				setup_redir(t_ctx *ctx, t_redir_list *redir_list);
 // fcntl/w_close.c
 int				w_close(int fd);
 // fcntl/w_dup2.c
@@ -397,11 +404,6 @@ char			*ft_xstrtrim(const char *s1, const char *set);
 int				is_ifs(char c);
 // utils/print_error.c
 void			print_error(char *mes1, char *mes2, char *mes3, bool use_errno);
-// utils/std_io.c
-void			init_std_io_dup(t_ctx *ctx);
-void			close_std_io_dup(t_ctx *ctx);
-void			dup_std_io(t_ctx *ctx);
-void			restore_std_io(t_ctx *ctx);
 // utils/xmalloc.c
 void			*xmalloc(size_t size);
 

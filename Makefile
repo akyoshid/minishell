@@ -26,10 +26,8 @@ SRC = \
 					$(SRC_DIR)exec/exec_command_in_pipe.c \
 					$(SRC_DIR)exec/exec_command.c \
 					$(SRC_DIR)exec/exec_external_command.c \
-					$(SRC_DIR)exec/exec_pipe_utils.c \
 					$(SRC_DIR)exec/exec_pipe.c \
 					$(SRC_DIR)exec/get_path.c \
-					$(SRC_DIR)exec/setup_redir.c \
 					$(SRC_DIR)expansion/expand_env_in_token_list.c \
 					$(SRC_DIR)expansion/expand_env.c \
 					$(SRC_DIR)expansion/handle_new_list_is_null.c \
@@ -38,6 +36,10 @@ SRC = \
 					$(SRC_DIR)expansion/perform_expansion.c \
 					$(SRC_DIR)expansion/remove_quote.c \
 					$(SRC_DIR)expansion/split_word.c \
+					$(SRC_DIR)fcntl/manage_pipe_fd.c \
+					$(SRC_DIR)fcntl/manage_std_io.c \
+					$(SRC_DIR)fcntl/setup_pipe.c \
+					$(SRC_DIR)fcntl/setup_redir.c \
 					$(SRC_DIR)fcntl/w_close.c \
 					$(SRC_DIR)fcntl/w_dup2.c \
 					$(SRC_DIR)heredoc/cmp_delimiter.c \
@@ -87,7 +89,6 @@ SRC = \
 					$(SRC_DIR)utils/ft_xstrtrim.c \
 					$(SRC_DIR)utils/is_ifs.c \
 					$(SRC_DIR)utils/print_error.c \
-					$(SRC_DIR)utils/std_io.c \
 					$(SRC_DIR)utils/xmalloc.c \
 					$(SRC_DIR)main.c
 

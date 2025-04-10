@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 15:45:00 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/10 08:40:53 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/10 17:00:47 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,6 @@ void	exec_pipe(t_ctx *ctx, t_ast *ast_node)
 	cmd_count = _count_commands_in_pipe(ast_node);
 	cmd_list = _create_cmd_list(ast_node, cmd_count);
 	cmd_pid_list = (pid_t *)xmalloc(sizeof(pid_t) * cmd_count);
-	dup_std_io(ctx);
 	if (_exec_commands_in_pipe(ctx, cmd_list, &cmd_count, cmd_pid_list) == -1)
 	{
 		_wait_commands_in_pipe(ctx, cmd_count, cmd_pid_list);
@@ -110,7 +109,6 @@ void	exec_pipe(t_ctx *ctx, t_ast *ast_node)
 	}
 	else
 		_wait_commands_in_pipe(ctx, cmd_count, cmd_pid_list);
-	restore_std_io(ctx);
 	free(cmd_list);
 	free(cmd_pid_list);
 }
