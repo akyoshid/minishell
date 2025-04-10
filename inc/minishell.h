@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:11:26 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/10 18:15:12 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/10 18:50:55 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -221,8 +221,10 @@ char			*search_env_value(t_ctx *ctx, t_env_list *env_list, char *key);
 t_env_list		*search_env_node(t_env_list *env_list, char *key);
 
 // exec/
+// exec/exec_and_or.c
+void			exec_and_or(t_ctx *ctx, t_ast *ast_node);
 // exec/exec_ast.c
-void			exec_ast(t_ctx *ctx, t_ast *ast_top_node);
+void			exec_ast(t_ctx *ctx, t_ast *ast_node);
 // exec/exec_builtin_command.c
 int				check_cmd_is_builtin(char *cmd);
 void			exec_builtin_command(t_ctx *ctx, t_ast *ast_node);
