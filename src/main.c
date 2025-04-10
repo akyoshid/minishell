@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:13:06 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/10 17:07:58 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/10 18:15:52 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 
 static void	_init_ctx(t_ctx *ctx, char **envp)
 {
-	init_env_list(envp, ctx);
 	ctx->exit_status = EXIT_SUCCESS;
-	init_std_io_dup(ctx);
+	init_env_list(envp, ctx);
 	init_sig_list(ctx);
+	init_std_io_dup(ctx);
+	ctx->stop_flag = false;
 }
 
 static void	_clear_ctx(t_ctx *ctx)

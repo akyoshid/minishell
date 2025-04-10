@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/29 23:09:19 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/02 23:45:51 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/10 17:44:12 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ static int	_handle_non_null_input(
 	{
 		if (info->no_expand_flag == false)
 			expand_env_heredoc(ctx, &input);
-		if (write(info->fd, input, ft_strlen(input)) == -1)
+		if (write(info->fd, input, ft_strlen(input)) == -1
+			|| write(info->fd, "\n", 1) == -1)
 		{
 			print_error("write", NULL, NULL, true);
 			free(input);

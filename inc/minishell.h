@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:11:26 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/10 17:22:01 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/10 18:15:12 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,10 +119,11 @@ typedef struct s_redir			t_redir;
 
 struct s_ctx
 {
-	t_env_list	*env_list;
 	int			exit_status;
-	int			std_io_dup[3];
+	t_env_list	*env_list;
 	char		*sig_list[NSIG];
+	bool		stop_flag;
+	int			std_io_dup[3];
 };
 
 struct s_env
