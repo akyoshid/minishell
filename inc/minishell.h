@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:11:26 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/11 10:28:03 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/11 22:36:04 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,8 +197,12 @@ void			print_ast_visual(t_ast *ast);
 void			print_ast(t_ast *ast);
 
 // builtin
+int				count_valid_option(t_ctx *ctx,
+					char **cmd_args, char *valid_option_set, char *usage);
 // builtin/echo.c
 void			echo_builtin(t_ctx *ctx, char **cmd_args);
+// builtin/env.c
+void			env_builtin(t_ctx *ctx, char **cmd_args);
 
 // env/
 // env/clear_env_x.c

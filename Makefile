@@ -13,7 +13,9 @@ SRC = \
 					$(SRC_DIR)ast/print_ast_visual_utils.c \
 					$(SRC_DIR)ast/print_ast_visual.c \
 					$(SRC_DIR)ast/print_ast.c \
+					$(SRC_DIR)builtin/count_valid_option.c \
 					$(SRC_DIR)builtin/echo.c \
+					$(SRC_DIR)builtin/env.c \
 					$(SRC_DIR)env/clear_env_x.c \
 					$(SRC_DIR)env/create_env_x.c \
 					$(SRC_DIR)env/create_envp.c \
