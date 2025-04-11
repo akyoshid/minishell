@@ -31,9 +31,6 @@ void	wait_child(t_ctx *ctx, pid_t pid)
 		else if (WIFSIGNALED(status))
 		{
 			signum = WTERMSIG(status);
-			if (signum != SIGINT)
-				ft_dprintf(STDERR_FILENO, "%s", ctx->sig_list[signum]);
-			ft_dprintf(STDERR_FILENO, "\n");
 			ctx->exit_status = 128 + signum;
 		}
 	}

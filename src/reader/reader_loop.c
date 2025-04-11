@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 12:56:14 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/11 07:13:57 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/11 09:58:16 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,10 @@ void	exec_input(t_ctx *ctx, char *input)
 	clear_token_list(&token_list);
 	exec_ast(ctx, ast);
 	clear_ast(ast);
+	if (ctx->exit_status > 128 && ctx->exit_status != 128 + SIGINT)
+		ft_dprintf(STDERR_FILENO, "%s", ctx->sig_list[ctx->exit_status - 128]);
+	if (ctx->exit_status > 128)
+		ft_dprintf(STDERR_FILENO, "\n");
 }
 
 void	reader_loop(t_ctx *ctx)
