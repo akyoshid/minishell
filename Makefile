@@ -30,6 +30,7 @@ SRC = \
 					$(SRC_DIR)exec/exec_pipe.c \
 					$(SRC_DIR)exec/exec_subshell.c \
 					$(SRC_DIR)exec/get_path.c \
+					$(SRC_DIR)exec/wait_child.c \
 					$(SRC_DIR)expansion/expand_env_in_token_list.c \
 					$(SRC_DIR)expansion/expand_env.c \
 					$(SRC_DIR)expansion/handle_new_list_is_null.c \

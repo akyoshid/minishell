@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:11:26 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/11 07:18:27 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/11 09:41:50 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -243,6 +243,8 @@ void			exec_pipe(t_ctx *ctx, t_ast *ast_node);
 void			exec_subshell(t_ctx *ctx, t_ast *ast_node);
 // exec/get_path.c
 char			*get_path(t_ctx *ctx, char *cmd);
+// exec/wait_child.c
+void			wait_child(t_ctx *ctx, pid_t pid);
 
 // expansion
 // expansion/expand_env_in_token_list.c

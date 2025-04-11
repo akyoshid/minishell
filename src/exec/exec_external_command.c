@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 04:02:48 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/10 08:36:01 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/11 08:41:27 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,33 +24,6 @@ static void	_run_in_child(t_ast *ast_node, char *path, char **envp)
 	execve(path, ast_node->cmd_args, envp);
 	print_error(path, NULL, NULL, true);
 	exit(EXIT_NOTEXEC);
-}
-
-void	wait_child(t_ctx *ctx, pid_t pid)
-{
-	int	status;
-	int	signum;
-
-	if (waitpid(pid, &status, 0) == -1)
-	{
-		handle_signal(ctx);
-		print_error("waitpid", NULL, NULL, true);
-		ctx->exit_status = EXIT_FAILURE;
-	}
-	else
-	{
-		handle_signal(ctx);
-		if (WIFEXITED(status))
-			ctx->exit_status = WEXITSTATUS(status);
-		else if (WIFSIGNALED(status))
-		{
-			signum = WTERMSIG(status);
-			if (signum != SIGINT)
-				ft_dprintf(STDERR_FILENO, "%s", ctx->sig_list[signum]);
-			ft_dprintf(STDERR_FILENO, "\n");
-			ctx->exit_status = 128 + signum;
-		}
-	}
 }
 
 void	exec_external_command(t_ctx *ctx, t_ast *ast_node)
