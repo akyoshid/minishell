@@ -6,11 +6,28 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:13:06 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/10 18:15:52 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/11 14:42:27 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minishell.h"
+
+static void	_check_args(int argc, char **argv)
+{
+	int	i;
+
+	i = 1;
+	while (i < argc)
+	{
+		if (argv[i][0] == '-')
+		{
+			ft_dprintf(STDERR_FILENO, "minishell: %s: ", argv[i]);
+			ft_dprintf(STDERR_FILENO, "invalid option\nUsage: minishell\n");
+			exit(EXIT_USAGE);
+		}
+		i++;
+	}
+}
 
 static void	_init_ctx(t_ctx *ctx, char **envp)
 {
@@ -30,8 +47,7 @@ int	main(int argc, char **argv, char **envp)
 {
 	t_ctx	ctx;
 
-	(void)argc;
-	(void)argv;
+	_check_args(argc, argv);
 	_init_ctx(&ctx, envp);
 	reader_loop(&ctx);
 	_clear_ctx(&ctx);
