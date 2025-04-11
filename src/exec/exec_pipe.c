@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 15:45:00 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/10 17:00:47 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/11 10:30:43 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,10 +85,7 @@ static void	_wait_commands_in_pipe(
 	i = 0;
 	while (i < cmd_count)
 	{
-		if (i == cmd_count - 1)
-			wait_child(ctx, cmd_pid_list[i]);
-		else if (waitpid(cmd_pid_list[i], NULL, 0) == -1)
-			print_error("waitpid", NULL, NULL, true);
+		wait_child(ctx, cmd_pid_list[cmd_count - 1]);
 		i++;
 	}
 }
