@@ -28,6 +28,7 @@ SRC = \
 					$(SRC_DIR)exec/exec_command.c \
 					$(SRC_DIR)exec/exec_external_command.c \
 					$(SRC_DIR)exec/exec_pipe.c \
+					$(SRC_DIR)exec/exec_subshell.c \
 					$(SRC_DIR)exec/get_path.c \
 					$(SRC_DIR)expansion/expand_env_in_token_list.c \
 					$(SRC_DIR)expansion/expand_env.c \
@@ -96,7 +97,7 @@ SRC = \
 OBJ =				$(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRC))
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 LIBFT_LIB = -L ./libft -lft -lreadline
 
 RM = rm -f
