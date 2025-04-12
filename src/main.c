@@ -6,27 +6,20 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:13:06 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/11 15:20:16 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/12 13:14:07 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minishell.h"
 
-static void	_check_args(int argc, char **argv)
+static void	_check_argv(t_ctx *ctx, char **argv)
 {
-	int	i;
+	t_cmd_info	cmd_info;
 
-	i = 1;
-	while (i < argc)
-	{
-		if (argv[i][0] == '-')
-		{
-			ft_dprintf(STDERR_FILENO, "minishell: %s: invalid option\n"
-				"Usage: minishell\n", argv[i]);
-			exit(EXIT_USAGE);
-		}
-		i++;
-	}
+	init_cmd_info1(&cmd_info, argv, "minishell", "");
+	init_cmd_info2(&cmd_info, 0, true);
+	if (check_args(ctx, &cmd_info) == -1)
+		exit(ctx->exit_status);
 }
 
 static void	_init_ctx(t_ctx *ctx, char **envp)
@@ -47,7 +40,8 @@ int	main(int argc, char **argv, char **envp)
 {
 	t_ctx	ctx;
 
-	_check_args(argc, argv);
+	(void)argc;
+	_check_argv(&ctx, argv);
 	_init_ctx(&ctx, envp);
 	reader_loop(&ctx);
 	_clear_ctx(&ctx);

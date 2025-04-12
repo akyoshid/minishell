@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:11:26 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/11 22:36:04 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/12 12:29:52 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,16 @@
 # include "../libft/inc/ft_printf.h"
 # include "../libft/inc/get_next_line_bonus.h"
 
-# define EXIT_USAGE		2
-# define EXIT_NOTEXEC	126
-# define EXIT_NOTFOUND	127
+# define EXIT_USAGE			2
+# define EXIT_NOTEXEC		126
+# define EXIT_NOTFOUND		127
 
-# define NO_TOKEN		-1
+# define NO_TOKEN			-1
 
-# define PIPE_READ		0
-# define PIPE_WRITE		1
+# define PIPE_READ			0
+# define PIPE_WRITE			1
+
+# define OPERAND_NO_LIMIT	-1
 
 enum e_char_type
 {
@@ -177,6 +179,19 @@ typedef struct s_pipe_fd_set
 	int	next_read;
 }		t_pipe_fd_set;
 
+typedef struct s_cmd_info
+{
+	char	*name;
+	char	**args;
+	char	*usage;
+	char	*valid_option_set;
+	int		operand_max;
+	bool	minishell_flag;
+	bool	double_dash_flag;
+	int		option_count;
+	int		operand_count;
+}			t_cmd_info;
+
 // ast/
 // ast/clear_ast.c
 void			clear_cmd_args(char **cmd_args);
@@ -197,12 +212,21 @@ void			print_ast_visual(t_ast *ast);
 void			print_ast(t_ast *ast);
 
 // builtin
-int				count_valid_option(t_ctx *ctx,
-					char **cmd_args, char *valid_option_set, char *usage);
+// builtin/check_args.c
+int				check_args(t_ctx *ctx, t_cmd_info *cmd_info);
+// builtin/count_operand.c
+int				count_operand(t_ctx *ctx, t_cmd_info *cmd_info);
+// builtin/count_option.c
+int				count_option(t_ctx *ctx, t_cmd_info *cmd_info);
 // builtin/echo.c
 void			echo_builtin(t_ctx *ctx, char **cmd_args);
 // builtin/env.c
 void			env_builtin(t_ctx *ctx, char **cmd_args);
+// builtin/init_cmd_info.c
+void			init_cmd_info1(t_cmd_info *cmd_info,
+					char **cmd_args, char *usage, char *valid_option_set);
+void			init_cmd_info2(t_cmd_info *cmd_info,
+					int operand_max, bool minishell_flag);
 
 // env/
 // env/clear_env_x.c

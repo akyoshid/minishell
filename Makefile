@@ -13,9 +13,12 @@ SRC = \
 					$(SRC_DIR)ast/print_ast_visual_utils.c \
 					$(SRC_DIR)ast/print_ast_visual.c \
 					$(SRC_DIR)ast/print_ast.c \
-					$(SRC_DIR)builtin/count_valid_option.c \
+					$(SRC_DIR)builtin/check_args.c \
+					$(SRC_DIR)builtin/count_operand.c \
+					$(SRC_DIR)builtin/count_option.c \
 					$(SRC_DIR)builtin/echo.c \
 					$(SRC_DIR)builtin/env.c \
+					$(SRC_DIR)builtin/init_cmd_info.c \
 					$(SRC_DIR)env/clear_env_x.c \
 					$(SRC_DIR)env/create_env_x.c \
 					$(SRC_DIR)env/create_envp.c \
