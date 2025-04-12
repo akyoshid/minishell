@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:11:26 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/12 12:29:52 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/12 16:05:58 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -227,6 +227,8 @@ void			init_cmd_info1(t_cmd_info *cmd_info,
 					char **cmd_args, char *usage, char *valid_option_set);
 void			init_cmd_info2(t_cmd_info *cmd_info,
 					int operand_max, bool minishell_flag);
+// builtin/unset.c
+void			unset_builtin(t_ctx *ctx, char **cmd_args);
 
 // env/
 // env/clear_env_x.c
@@ -237,6 +239,8 @@ t_env_list		*create_env_node(char *key, char *value);
 t_env_list		*create_env_list(char **envp);
 // env/create_envp.c
 char			**create_envp(t_ctx *ctx);
+// env/delete_env_node.c
+void			delete_env_node(t_env_list **env_list, t_env_list *target_node);
 // env/get_env_x.c
 char			*get_env_key(t_env_list *env_node);
 char			*get_env_value(t_env_list *env_node);
@@ -247,6 +251,8 @@ void			print_env_list(t_env_list *env_list);
 // env/search_env_x.c
 char			*search_env_value(t_ctx *ctx, t_env_list *env_list, char *key);
 t_env_list		*search_env_node(t_env_list *env_list, char *key);
+t_env_list		*search_prev_env_node(
+					t_env_list *env_list, t_env_list *current_node);
 
 // exec/
 // exec/exec_and_or.c

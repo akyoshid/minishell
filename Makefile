@@ -19,9 +19,11 @@ SRC = \
 					$(SRC_DIR)builtin/echo.c \
 					$(SRC_DIR)builtin/env.c \
 					$(SRC_DIR)builtin/init_cmd_info.c \
+					$(SRC_DIR)builtin/unset.c \
 					$(SRC_DIR)env/clear_env_x.c \
 					$(SRC_DIR)env/create_env_x.c \
 					$(SRC_DIR)env/create_envp.c \
+					$(SRC_DIR)env/delete_env_node.c \
 					$(SRC_DIR)env/get_env_x.c \
 					$(SRC_DIR)env/init_env_list.c \
 					$(SRC_DIR)env/print_env_list.c \

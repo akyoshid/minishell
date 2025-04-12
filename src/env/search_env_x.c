@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 20:38:00 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/08 14:15:57 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/12 15:31:40 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,23 @@ t_env_list	*search_env_node(t_env_list *env_list, char *key)
 		if (ft_strcmp(get_env_key(current_node), key) == 0)
 			return (current_node);
 		current_node = current_node->next;
+	}
+	return (NULL);
+}
+
+t_env_list	*search_prev_env_node(
+	t_env_list *env_list, t_env_list *current_node)
+{
+	t_env_list	*temp;
+
+	temp = env_list;
+	if (temp == current_node)
+		return (NULL);
+	while (temp != NULL)
+	{
+		if (temp->next == current_node)
+			return (temp);
+		temp = temp->next;
 	}
 	return (NULL);
 }
