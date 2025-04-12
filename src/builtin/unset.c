@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 22:59:23 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/12 15:45:41 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/12 16:13:49 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	_unset_core(t_ctx *ctx, t_cmd_info *cmd_info)
 {
-	int	i;
+	int			i;
 	t_env_list	*target_node;
 
 	i = 1 + cmd_info->option_count;
