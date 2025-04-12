@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 07:14:24 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/11 22:59:08 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/12 16:16:58 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int	check_cmd_is_builtin(char *cmd)
 	// 	return (true);
 	// else if (ft_strcmp(cmd, "pwd") == 0)
 	// 	return (true);
-	// else if (ft_strcmp(cmd, "export") == 0)
-	// 	return (true);
+	else if (ft_strcmp(cmd, "export") == 0)
+		return (true);
 	else if (ft_strcmp(cmd, "unset") == 0)
 		return (true);
 	else if (ft_strcmp(cmd, "env") == 0)
@@ -41,8 +41,8 @@ void	exec_builtin_command(t_ctx *ctx, t_ast *ast_node)
 	// 	cd_builtin(ctx, ast_node->cmd_args);
 	// else if (ft_strcmp(ast_node->cmd_args[0], "pwd") == 0)
 	// 	pwd_builtin(ctx, ast_node->cmd_args);
-	// else if (ft_strcmp(ast_node->cmd_args[0], "export") == 0)
-	// 	export_builtin(ctx, ast_node->cmd_args);
+	else if (ft_strcmp(ast_node->cmd_args[0], "export") == 0)
+		export_builtin(ctx, ast_node->cmd_args);
 	else if (ft_strcmp(ast_node->cmd_args[0], "unset") == 0)
 		unset_builtin(ctx, ast_node->cmd_args);
 	else if (ft_strcmp(ast_node->cmd_args[0], "env") == 0)

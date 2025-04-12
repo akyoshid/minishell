@@ -1,36 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clear_env_x.c                                      :+:      :+:    :+:   */
+/*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/19 20:39:44 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/12 19:41:36 by akyoshid         ###   ########.fr       */
+/*   Created: 2025/04/12 16:17:04 by akyoshid          #+#    #+#             */
+/*   Updated: 2025/04/12 19:53:49 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-void	clear_env_node_value(void *void_content)
+void	export_builtin(t_ctx *ctx, char **cmd_args)
 {
-	t_env	*content;
+	t_cmd_info	cmd_info;
 
-	content = (t_env *)void_content;
-	free(content->value);
-}
-
-void	clear_env_node_content(void *void_content)
-{
-	t_env	*content;
-
-	content = (t_env *)void_content;
-	free(content->key);
-	free(content->value);
-	free(content);
-}
-
-void	clear_env_list(t_env_list **env_list)
-{
-	ft_lstclear(env_list, clear_env_node_content);
+	init_cmd_info1(&cmd_info, cmd_args, "export [name=value ...]", "");
+	init_cmd_info2(&cmd_info, OPERAND_NO_LIMIT, false);
+	if (check_args(ctx, &cmd_info) == -1)
+		return ;
+	if (cmd_info.operand_count == 0)
+		export_no_operand(ctx);
+	else if (export_with_operand(ctx, &cmd_info) == -1)
+		return ;
+	ctx->exit_status = EXIT_SUCCESS;
 }

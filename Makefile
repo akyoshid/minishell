@@ -18,16 +18,22 @@ SRC = \
 					$(SRC_DIR)builtin/count_option.c \
 					$(SRC_DIR)builtin/echo.c \
 					$(SRC_DIR)builtin/env.c \
+					$(SRC_DIR)builtin/export_no_operand.c \
+					$(SRC_DIR)builtin/export_with_operand.c \
+					$(SRC_DIR)builtin/export.c \
 					$(SRC_DIR)builtin/init_cmd_info.c \
 					$(SRC_DIR)builtin/unset.c \
 					$(SRC_DIR)env/clear_env_x.c \
 					$(SRC_DIR)env/create_env_x.c \
 					$(SRC_DIR)env/create_envp.c \
 					$(SRC_DIR)env/delete_env_node.c \
+					$(SRC_DIR)env/dup_env_list.c \
 					$(SRC_DIR)env/get_env_x.c \
 					$(SRC_DIR)env/init_env_list.c \
 					$(SRC_DIR)env/print_env_list.c \
 					$(SRC_DIR)env/search_env_x.c \
+					$(SRC_DIR)env/set_env_x.c \
+					$(SRC_DIR)env/sort_env_list.c \
 					$(SRC_DIR)exec/exec_and_or.c \
 					$(SRC_DIR)exec/exec_ast.c \
 					$(SRC_DIR)exec/exec_builtin_command.c \

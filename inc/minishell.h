@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:11:26 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/12 16:05:58 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/12 19:53:17 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,12 @@ enum e_heredoc_reader_loop_status
 	HEREDOC_READER_LOOP_FAILURE,
 };
 
+enum e_export_type
+{
+	EXPORT_ASSIGN,
+	EXPORT_APPEND,
+};
+
 extern volatile sig_atomic_t	g_signum;
 
 typedef t_list					t_env_list;
@@ -192,6 +198,13 @@ typedef struct s_cmd_info
 	int		operand_count;
 }			t_cmd_info;
 
+typedef struct s_export_info
+{
+	char	*key;
+	char	*value;
+	int		type;
+}			t_export_info;
+
 // ast/
 // ast/clear_ast.c
 void			clear_cmd_args(char **cmd_args);
@@ -222,6 +235,12 @@ int				count_option(t_ctx *ctx, t_cmd_info *cmd_info);
 void			echo_builtin(t_ctx *ctx, char **cmd_args);
 // builtin/env.c
 void			env_builtin(t_ctx *ctx, char **cmd_args);
+// builtin/export_no_operand.c
+void			export_no_operand(t_ctx *ctx);
+// builtin/export_with_operand.c
+int				export_with_operand(t_ctx *ctx, t_cmd_info *cmd_info);
+// builtin/export.c
+void			export_builtin(t_ctx *ctx, char **cmd_args);
 // builtin/init_cmd_info.c
 void			init_cmd_info1(t_cmd_info *cmd_info,
 					char **cmd_args, char *usage, char *valid_option_set);
@@ -232,6 +251,7 @@ void			unset_builtin(t_ctx *ctx, char **cmd_args);
 
 // env/
 // env/clear_env_x.c
+void			clear_env_node_value(void *void_content);
 void			clear_env_node_content(void *void_content);
 void			clear_env_list(t_env_list **env_list);
 // env/create_env_x.c
@@ -241,6 +261,8 @@ t_env_list		*create_env_list(char **envp);
 char			**create_envp(t_ctx *ctx);
 // env/delete_env_node.c
 void			delete_env_node(t_env_list **env_list, t_env_list *target_node);
+// env/dup_env_list.c
+t_env_list		*dup_env_list(t_env_list *env_list);
 // env/get_env_x.c
 char			*get_env_key(t_env_list *env_node);
 char			*get_env_value(t_env_list *env_node);
@@ -253,6 +275,10 @@ char			*search_env_value(t_ctx *ctx, t_env_list *env_list, char *key);
 t_env_list		*search_env_node(t_env_list *env_list, char *key);
 t_env_list		*search_prev_env_node(
 					t_env_list *env_list, t_env_list *current_node);
+// env/set_env_x.c
+void			set_env_value(t_env_list *env_node, char *value);
+// env/sort_env_list.c
+t_env_list		*sort_env_list(t_env_list *env_list);
 
 // exec/
 // exec/exec_and_or.c
