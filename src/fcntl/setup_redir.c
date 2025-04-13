@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 06:24:27 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/08 03:19:37 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/13 19:45:55 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	_setup_redir_in(t_ctx *ctx, char *filename)
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 	{
-		print_error("open", NULL, NULL, true);
+		print_error(filename, NULL, NULL, true);
 		ctx->exit_status = EXIT_FAILURE;
 		return (-1);
 	}
@@ -48,7 +48,7 @@ static int	_setup_redir_out(t_ctx *ctx, char *filename, bool append_flag)
 		fd = open(filename, O_WRONLY | O_CREAT | O_APPEND, 0666);
 	if (fd == -1)
 	{
-		print_error("open", NULL, NULL, true);
+		print_error(filename, NULL, NULL, true);
 		ctx->exit_status = EXIT_FAILURE;
 		return (-1);
 	}
