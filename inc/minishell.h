@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:11:26 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/12 19:53:17 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/13 02:07:24 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <errno.h>
 # include <signal.h>
 # include <string.h>
+# include <limits.h>
 # include <dirent.h>
 # include <termios.h>
 # include <stdbool.h>
@@ -132,6 +133,8 @@ struct s_ctx
 	char		*sig_list[NSIG];
 	bool		stop_flag;
 	int			std_io_dup[3];
+	bool		in_pipe_flag;
+	bool		in_subshell_flag;
 };
 
 struct s_env
@@ -235,6 +238,10 @@ int				count_option(t_ctx *ctx, t_cmd_info *cmd_info);
 void			echo_builtin(t_ctx *ctx, char **cmd_args);
 // builtin/env.c
 void			env_builtin(t_ctx *ctx, char **cmd_args);
+// builtin/exit_atol.c
+long			exit_atol(t_ctx *ctx, char *str, bool *fin_flag);
+// builtin/exit.c
+void			exit_builtin(t_ctx *ctx, char **cmd_args);
 // builtin/export_no_operand.c
 void			export_no_operand(t_ctx *ctx);
 // builtin/export_with_operand.c

@@ -18,6 +18,8 @@ SRC = \
 					$(SRC_DIR)builtin/count_option.c \
 					$(SRC_DIR)builtin/echo.c \
 					$(SRC_DIR)builtin/env.c \
+					$(SRC_DIR)builtin/exit_atol.c \
+					$(SRC_DIR)builtin/exit.c \
 					$(SRC_DIR)builtin/export_no_operand.c \
 					$(SRC_DIR)builtin/export_with_operand.c \
 					$(SRC_DIR)builtin/export.c \

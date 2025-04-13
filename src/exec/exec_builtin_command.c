@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 07:14:24 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/12 16:16:58 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/12 20:04:53 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ int	check_cmd_is_builtin(char *cmd)
 		return (true);
 	else if (ft_strcmp(cmd, "env") == 0)
 		return (true);
-	// else if (ft_strcmp(cmd, "exit") == 0)
-	// 	return (true);
+	else if (ft_strcmp(cmd, "exit") == 0)
+		return (true);
 	else if (ft_strcmp(cmd, ":") == 0)
 		return (true);
 	return (false);
@@ -47,8 +47,8 @@ void	exec_builtin_command(t_ctx *ctx, t_ast *ast_node)
 		unset_builtin(ctx, ast_node->cmd_args);
 	else if (ft_strcmp(ast_node->cmd_args[0], "env") == 0)
 		env_builtin(ctx, ast_node->cmd_args);
-	// else if (ft_strcmp(ast_node->cmd_args[0], "exit") == 0)
-	// 	exit_builtin(ctx, ast_node->cmd_args);
+	else if (ft_strcmp(ast_node->cmd_args[0], "exit") == 0)
+		exit_builtin(ctx, ast_node->cmd_args);
 	else if (ft_strcmp(ast_node->cmd_args[0], ":") == 0)
 		ctx->exit_status = EXIT_SUCCESS;
 }

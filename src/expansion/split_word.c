@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 12:56:07 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/02 10:52:11 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/12 22:21:41 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	_proc_quote(char **original_word_p, int *word_len_p)
 				ft_dprintf(2, "`\''\n");
 			else
 				ft_dprintf(2, "`\"'\n");
-			exit (EXIT_USAGE);
+			exit(EXIT_USAGE);
 		}
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 08:41:04 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/11 10:26:10 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/13 01:25:33 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,11 @@ void	wait_child(t_ctx *ctx, pid_t last_pid)
 		{
 			signum = WTERMSIG(status);
 			ctx->exit_status = 128 + signum;
+			if (ctx->exit_status > 128 && ctx->exit_status != 128 + SIGINT)
+				ft_dprintf(STDERR_FILENO, "%s",
+					ctx->sig_list[ctx->exit_status - 128]);
+			if (ctx->exit_status > 128)
+				ft_dprintf(STDERR_FILENO, "\n");
 		}
 	}
 }
