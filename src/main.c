@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:13:06 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/12 23:59:26 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/13 15:08:58 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ static void	_init_ctx(t_ctx *ctx, char **envp)
 	ctx->stop_flag = false;
 	init_std_io_dup(ctx);
 	ctx->in_pipe_flag = false;
-	ctx->in_subshell_flag = false;
 }
 
 static void	_clear_ctx(t_ctx *ctx)

@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 00:26:17 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/13 01:56:47 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/13 13:46:00 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	_handle_error_non_numeric(
 	t_ctx *ctx, char *arg, bool *fin_flag)
 {
-	if (ctx->in_pipe_flag == false && ctx->in_subshell_flag == false)
+	if (ctx->in_pipe_flag == false)
 	{
 		ft_dprintf(STDERR_FILENO,
 			"exit\nminishell: exit: %s: numeric argument required\n", arg);

@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 16:15:01 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/13 00:00:21 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/13 15:09:45 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	exec_subshell(t_ctx *ctx, t_ast *ast_node)
 {
 	pid_t	pid;
 
-	ctx->in_subshell_flag = true;
 	pid = fork();
 	if (pid == -1)
 		_handle_fork_error_in_subshell(ctx);
@@ -40,5 +39,4 @@ void	exec_subshell(t_ctx *ctx, t_ast *ast_node)
 		_run_in_child_in_subshell(ctx, ast_node);
 	else
 		wait_child(ctx, pid);
-	ctx->in_subshell_flag = false;
 }

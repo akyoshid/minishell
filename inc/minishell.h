@@ -134,7 +134,6 @@ struct s_ctx
 	bool		stop_flag;
 	int			std_io_dup[3];
 	bool		in_pipe_flag;
-	bool		in_subshell_flag;
 };
 
 struct s_env

@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 20:11:38 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/13 01:59:02 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/13 13:45:45 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	_w_exit(t_ctx *ctx, int status, bool *fin_flag)
 {
-	if (ctx->in_pipe_flag == false && ctx->in_subshell_flag == false)
+	if (ctx->in_pipe_flag == false)
 	{
 		ft_dprintf(STDERR_FILENO, "exit\n");
 		close_std_io_dup(ctx);
@@ -29,7 +29,7 @@ static void	_w_exit(t_ctx *ctx, int status, bool *fin_flag)
 
 static void	_handle_too_many_args(t_ctx *ctx)
 {
-	if (ctx->in_pipe_flag == false && ctx->in_subshell_flag == false)
+	if (ctx->in_pipe_flag == false)
 		ft_dprintf(STDERR_FILENO,
 			"exit\nminishell: exit: too many arguments\n");
 	else
