@@ -12,6 +12,7 @@ FTIS_DIR =		$(SRC_DIR)ft_is/ft_isalnum.c \
 				$(SRC_DIR)ft_is/ft_isascii.c \
 				$(SRC_DIR)ft_is/ft_isdigit.c \
 				$(SRC_DIR)ft_is/ft_isprint.c 
+				$(SRC_DIR)ft_is/ft_isspace.c 
 FTMEM_DIR =		$(SRC_DIR)ft_mem/ft_bzero.c \
 				$(SRC_DIR)ft_mem/ft_calloc.c \
 				$(SRC_DIR)ft_mem/ft_memchr.c \
@@ -26,6 +27,7 @@ FTPUT_DIR =		$(SRC_DIR)ft_put/ft_putchar_fd.c \
 				$(SRC_DIR)ft_put/ft_putstr_fd.c
 FTTO_DIR =		$(SRC_DIR)ft_to/ft_atoi.c \
 				$(SRC_DIR)ft_to/ft_itoa.c \
+				$(SRC_DIR)ft_to/ft_strtol_base_10.c \
 				$(SRC_DIR)ft_to/ft_tolower.c \
 				$(SRC_DIR)ft_to/ft_toupper.c
 FTSTR_DIR =		$(SRC_DIR)ft_str/ft_split_mult_c.c \
