@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:11:26 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/13 20:13:32 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/13 23:48:53 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -476,6 +476,8 @@ void			*ft_xcalloc(size_t count, size_t size);
 char			*ft_xitoa(int n);
 // utils/ft_xlstnew.c
 t_list			*ft_xlstnew(void *content);
+// utils/ft_xltoa.c
+char			*ft_xltoa(long n);
 // utils/ft_xrealloc.c
 void			*ft_xrealloc(void *ptr, size_t old_size, size_t new_size);
 // utils/ft_xsplit.c

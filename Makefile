@@ -104,6 +104,7 @@ SRC = \
 					$(SRC_DIR)utils/ft_xcalloc.c \
 					$(SRC_DIR)utils/ft_xitoa.c \
 					$(SRC_DIR)utils/ft_xlstnew.c \
+					$(SRC_DIR)utils/ft_xltoa.c \
 					$(SRC_DIR)utils/ft_xrealloc.c \
 					$(SRC_DIR)utils/ft_xsplit.c \
 					$(SRC_DIR)utils/ft_xstrdup.c \
