@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:11:26 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/13 02:07:24 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/13 02:11:56 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,6 +208,19 @@ typedef struct s_export_info
 	int		type;
 }			t_export_info;
 
+// args/
+// args/check_args.c
+int				check_args(t_ctx *ctx, t_cmd_info *cmd_info);
+// args/count_operand.c
+int				count_operand(t_ctx *ctx, t_cmd_info *cmd_info);
+// args/count_option.c
+int				count_option(t_ctx *ctx, t_cmd_info *cmd_info);
+// args/init_cmd_info.c
+void			init_cmd_info1(t_cmd_info *cmd_info,
+					char **cmd_args, char *usage, char *valid_option_set);
+void			init_cmd_info2(t_cmd_info *cmd_info,
+					int operand_max, bool minishell_flag);
+
 // ast/
 // ast/clear_ast.c
 void			clear_cmd_args(char **cmd_args);
@@ -228,12 +241,6 @@ void			print_ast_visual(t_ast *ast);
 void			print_ast(t_ast *ast);
 
 // builtin
-// builtin/check_args.c
-int				check_args(t_ctx *ctx, t_cmd_info *cmd_info);
-// builtin/count_operand.c
-int				count_operand(t_ctx *ctx, t_cmd_info *cmd_info);
-// builtin/count_option.c
-int				count_option(t_ctx *ctx, t_cmd_info *cmd_info);
 // builtin/echo.c
 void			echo_builtin(t_ctx *ctx, char **cmd_args);
 // builtin/env.c
@@ -248,11 +255,6 @@ void			export_no_operand(t_ctx *ctx);
 int				export_with_operand(t_ctx *ctx, t_cmd_info *cmd_info);
 // builtin/export.c
 void			export_builtin(t_ctx *ctx, char **cmd_args);
-// builtin/init_cmd_info.c
-void			init_cmd_info1(t_cmd_info *cmd_info,
-					char **cmd_args, char *usage, char *valid_option_set);
-void			init_cmd_info2(t_cmd_info *cmd_info,
-					int operand_max, bool minishell_flag);
 // builtin/unset.c
 void			unset_builtin(t_ctx *ctx, char **cmd_args);
 

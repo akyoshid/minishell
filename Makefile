@@ -8,14 +8,15 @@ LIBFT_DIR =	libft/
 INC =				$(INC_DIR)minishell.h
 
 SRC = \
+					$(SRC_DIR)args/check_args.c \
+					$(SRC_DIR)args/count_operand.c \
+					$(SRC_DIR)args/count_option.c \
+					$(SRC_DIR)args/init_cmd_info.c \
 					$(SRC_DIR)ast/clear_ast.c \
 					$(SRC_DIR)ast/get_redir_x.c \
 					$(SRC_DIR)ast/print_ast_visual_utils.c \
 					$(SRC_DIR)ast/print_ast_visual.c \
 					$(SRC_DIR)ast/print_ast.c \
-					$(SRC_DIR)builtin/check_args.c \
-					$(SRC_DIR)builtin/count_operand.c \
-					$(SRC_DIR)builtin/count_option.c \
 					$(SRC_DIR)builtin/echo.c \
 					$(SRC_DIR)builtin/env.c \
 					$(SRC_DIR)builtin/exit_atol.c \
@@ -23,7 +24,6 @@ SRC = \
 					$(SRC_DIR)builtin/export_no_operand.c \
 					$(SRC_DIR)builtin/export_with_operand.c \
 					$(SRC_DIR)builtin/export.c \
-					$(SRC_DIR)builtin/init_cmd_info.c \
 					$(SRC_DIR)builtin/unset.c \
 					$(SRC_DIR)env/clear_env_x.c \
 					$(SRC_DIR)env/create_env_x.c \
