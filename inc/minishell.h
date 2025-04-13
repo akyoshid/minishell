@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:11:26 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/13 02:11:56 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/13 20:13:32 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,7 @@ typedef struct s_redir			t_redir;
 struct s_ctx
 {
 	int			exit_status;
+	char		*cwd;
 	t_env_list	*env_list;
 	char		*sig_list[NSIG];
 	bool		stop_flag;
@@ -214,6 +215,8 @@ int				check_args(t_ctx *ctx, t_cmd_info *cmd_info);
 int				count_operand(t_ctx *ctx, t_cmd_info *cmd_info);
 // args/count_option.c
 int				count_option(t_ctx *ctx, t_cmd_info *cmd_info);
+// args/get_operand.c
+char			*get_operand(t_cmd_info *cmd_info, int index);
 // args/init_cmd_info.c
 void			init_cmd_info1(t_cmd_info *cmd_info,
 					char **cmd_args, char *usage, char *valid_option_set);
@@ -240,6 +243,11 @@ void			print_ast_visual(t_ast *ast);
 void			print_ast(t_ast *ast);
 
 // builtin
+// builtin/cd_utils.c
+int				w_chdir(t_ctx *ctx, char *path);
+void			update_wd_data(t_ctx *ctx, char *path);
+// builtin/cd.c
+void			cd_builtin(t_ctx *ctx, char **cmd_args);
 // builtin/echo.c
 void			echo_builtin(t_ctx *ctx, char **cmd_args);
 // builtin/env.c
@@ -254,6 +262,8 @@ void			export_no_operand(t_ctx *ctx);
 int				export_with_operand(t_ctx *ctx, t_cmd_info *cmd_info);
 // builtin/export.c
 void			export_builtin(t_ctx *ctx, char **cmd_args);
+// builtin/pwd.c
+void			pwd_builtin(t_ctx *ctx, char **cmd_args);
 // builtin/unset.c
 void			unset_builtin(t_ctx *ctx, char **cmd_args);
 
@@ -287,6 +297,9 @@ t_env_list		*search_prev_env_node(
 void			set_env_value(t_env_list *env_node, char *value);
 // env/sort_env_list.c
 t_env_list		*sort_env_list(t_env_list *env_list);
+// env/update_env_node.c
+void			update_env_node(t_env_list **env_list,
+					char *key, char *value, bool append_flag);
 
 // exec/
 // exec/exec_and_or.c
@@ -471,6 +484,8 @@ char			**ft_xsplit(char const *s, char c);
 char			*ft_xstrdup(const char *s1);
 // utils/ft_xstrjoin.c
 char			*ft_xstrjoin(char const *s1, char const *s2);
+// utils/ft_xstrjoin3.c
+char			*ft_xstrjoin3(char const *s1, char const *s2, char const *s3);
 // utils/ft_xstrndup.c
 char			*ft_xstrndup(const char *s1, size_t n);
 // utils/ft_xstrtrim.c

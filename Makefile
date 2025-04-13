@@ -11,6 +11,7 @@ SRC = \
 					$(SRC_DIR)args/check_args.c \
 					$(SRC_DIR)args/count_operand.c \
 					$(SRC_DIR)args/count_option.c \
+					$(SRC_DIR)args/get_operand.c \
 					$(SRC_DIR)args/init_cmd_info.c \
 					$(SRC_DIR)ast/clear_ast.c \
 					$(SRC_DIR)ast/get_redir_x.c \
@@ -18,12 +19,15 @@ SRC = \
 					$(SRC_DIR)ast/print_ast_visual.c \
 					$(SRC_DIR)ast/print_ast.c \
 					$(SRC_DIR)builtin/echo.c \
+					$(SRC_DIR)builtin/cd_utils.c \
+					$(SRC_DIR)builtin/cd.c \
 					$(SRC_DIR)builtin/env.c \
 					$(SRC_DIR)builtin/exit_atol.c \
 					$(SRC_DIR)builtin/exit.c \
 					$(SRC_DIR)builtin/export_no_operand.c \
 					$(SRC_DIR)builtin/export_with_operand.c \
 					$(SRC_DIR)builtin/export.c \
+					$(SRC_DIR)builtin/pwd.c \
 					$(SRC_DIR)builtin/unset.c \
 					$(SRC_DIR)env/clear_env_x.c \
 					$(SRC_DIR)env/create_env_x.c \
@@ -36,6 +40,7 @@ SRC = \
 					$(SRC_DIR)env/search_env_x.c \
 					$(SRC_DIR)env/set_env_x.c \
 					$(SRC_DIR)env/sort_env_list.c \
+					$(SRC_DIR)env/update_env_node.c \
 					$(SRC_DIR)exec/exec_and_or.c \
 					$(SRC_DIR)exec/exec_ast.c \
 					$(SRC_DIR)exec/exec_builtin_command.c \
@@ -103,6 +108,7 @@ SRC = \
 					$(SRC_DIR)utils/ft_xsplit.c \
 					$(SRC_DIR)utils/ft_xstrdup.c \
 					$(SRC_DIR)utils/ft_xstrjoin.c \
+					$(SRC_DIR)utils/ft_xstrjoin3.c \
 					$(SRC_DIR)utils/ft_xstrndup.c \
 					$(SRC_DIR)utils/ft_xstrtrim.c \
 					$(SRC_DIR)utils/is_ifs.c \

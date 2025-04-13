@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:13:06 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/13 15:08:58 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/13 18:23:46 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@ static void	_check_argv(t_ctx *ctx, char **argv)
 static void	_init_ctx(t_ctx *ctx, char **envp)
 {
 	ctx->exit_status = EXIT_SUCCESS;
+	ctx->cwd = getcwd(NULL, 0);
+	if (ctx->cwd == NULL)
+	{
+		print_error("getcwd", NULL, NULL, true);
+		exit(EXIT_FAILURE);
+	}
 	init_env_list(envp, ctx);
 	init_sig_list(ctx);
 	ctx->stop_flag = false;
@@ -34,6 +40,7 @@ static void	_init_ctx(t_ctx *ctx, char **envp)
 
 static void	_clear_ctx(t_ctx *ctx)
 {
+	free(ctx->cwd);
 	clear_env_list(&ctx->env_list);
 }
 
