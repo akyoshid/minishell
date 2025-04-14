@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:11:26 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/13 23:48:53 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/14 01:51:28 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -354,6 +354,8 @@ t_token_list	*split_word(t_token_list **token_list_p,
 					char *current_node_word_original);
 
 // fcntl
+// fcntl/is_directory.c
+int				is_directory(char *path);
 // fcntl/manage_pipe_fd.c
 void			init_pipe_fd_set(t_pipe_fd_set *pipe_fd_set);
 t_pipe_fd_set	*update_pipe_fd_set(t_pipe_fd_set *pipe_fd_set, int pipe_fd[2]);

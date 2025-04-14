@@ -59,6 +59,7 @@ SRC = \
 					$(SRC_DIR)expansion/perform_expansion.c \
 					$(SRC_DIR)expansion/remove_quote.c \
 					$(SRC_DIR)expansion/split_word.c \
+					$(SRC_DIR)fcntl/is_directory.c \
 					$(SRC_DIR)fcntl/manage_pipe_fd.c \
 					$(SRC_DIR)fcntl/manage_std_io.c \
 					$(SRC_DIR)fcntl/setup_pipe.c \

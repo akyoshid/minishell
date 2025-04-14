@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 07:57:08 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/08 14:21:08 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/14 02:03:20 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static char	*_get_path_cmd_is_path(t_ctx *ctx, char *cmd)
 		free(path);
 		return (NULL);
 	}
-	if (access(path, X_OK) != 0)
+	if (is_directory(path) == 1 || access(path, X_OK) != 0)
 	{
 		print_error(path, NULL, NULL, true);
 		ctx->exit_status = EXIT_NOTEXEC;
@@ -46,7 +46,7 @@ static char	*_get_path_env_path_is_empty(t_ctx *ctx, char *cmd)
 		free(path);
 		return (NULL);
 	}
-	if (access(path, X_OK) != 0)
+	if (is_directory(path) == 1 || access(path, X_OK) != 0)
 	{
 		print_error(cmd, NULL, NULL, true);
 		ctx->exit_status = EXIT_NOTEXEC;
@@ -56,32 +56,50 @@ static char	*_get_path_env_path_is_empty(t_ctx *ctx, char *cmd)
 	return (path);
 }
 
+static void	_handle_path_not_found(
+	t_ctx *ctx, char *cmd, char *last_match_path, int errno_cp)
+{
+	if (last_match_path == NULL)
+	{
+		print_error(cmd, "command not found", NULL, false);
+		ctx->exit_status = EXIT_NOTFOUND;
+	}
+	else
+	{
+		errno = errno_cp;
+		print_error(last_match_path, NULL, NULL, true);
+		ctx->exit_status = EXIT_NOTEXEC;
+		free(last_match_path);
+	}
+}
+
 static char	*_get_path_env_path_is_not_empty(
 	t_ctx *ctx, char *cmd, char **env_path_list, char *slash_cmd)
 {
 	char	*path;
+	char	*last_match_path;
+	int		errno_cp;
 	int		i;
 
+	last_match_path = NULL;
+	errno_cp = 0;
 	i = 0;
 	while (env_path_list[i] != NULL)
 	{
 		path = ft_xstrjoin(env_path_list[i], slash_cmd);
 		if (access(path, F_OK) == 0)
 		{
-			if (access(path, X_OK) != 0)
-			{
-				print_error(path, NULL, NULL, true);
-				ctx->exit_status = EXIT_NOTEXEC;
-				free(path);
-				return (NULL);
-			}
-			return (path);
+			if (is_directory(path) != 1 && access(path, X_OK) == 0)
+				return (free(last_match_path), path);
+			free(last_match_path);
+			last_match_path = path;
+			errno_cp = errno;
 		}
-		free(path);
+		else
+			free(path);
 		i++;
 	}
-	print_error(cmd, "command not found", NULL, false);
-	ctx->exit_status = EXIT_NOTFOUND;
+	_handle_path_not_found(ctx, cmd, last_match_path, errno_cp);
 	return (NULL);
 }
 
