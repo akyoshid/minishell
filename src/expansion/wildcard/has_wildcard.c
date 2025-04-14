@@ -1,21 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   perform_expansion.c                                :+:      :+:    :+:   */
+/*   has_wildcard.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/24 19:59:35 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/14 08:46:16 by akyoshid         ###   ########.fr       */
+/*   Created: 2025/04/14 08:41:58 by akyoshid          #+#    #+#             */
+/*   Updated: 2025/04/14 11:05:18 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+#include "../../../inc/minishell.h"
 
-// Scheduled to add expand_filenameexpand_filename
-void	perform_expansion(t_ctx *ctx, t_token_list **token_list_p)
+// Check if the string contains a wildcard character
+bool	has_wildcard(char *str)
 {
-	expand_env_in_token_list(ctx, token_list_p);
-	expand_wildcard_in_token_list(token_list_p);
-	remove_quote(*token_list_p);
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '*')
+			return (true);
+		i++;
+	}
+	return (false);
 }

@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:11:26 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/14 11:02:30 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/14 11:02:47 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -348,6 +348,15 @@ int				is_avail_char_for_var_name(int c);
 t_token_list	*split_word(t_token_list **token_list_p,
 					t_token_list *prev_node, t_token_list *current_node,
 					char *current_node_word_original);
+// expansion/wildcard
+// expansion/wildcard/expand_wildcard_in_token_list.c
+void			expand_wildcard_in_token_list(t_token_list **token_list_p);
+// expansion/wildcard/get_matched_files.c
+char			**get_matched_files(char *pattern, int *count_p);
+// expansion/wildcard/has_wildcard.c
+bool			has_wildcard(char *str);
+// expansion/wildcard/is_pattern_matched.c
+bool			is_pattern_matched(char *pattern, char *file);
 // expansion
 // expansion/perform_expansion.c
 void			perform_expansion(t_ctx *ctx, t_token_list **token_list_p);

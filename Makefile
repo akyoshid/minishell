@@ -57,6 +57,10 @@ SRC = \
 					$(SRC_DIR)expansion/env/handle_prev_node_is_redirop.c \
 					$(SRC_DIR)expansion/env/is_avail_char_for_var_name.c \
 					$(SRC_DIR)expansion/env/split_word.c \
+					$(SRC_DIR)expansion/wildcard/expand_wildcard_in_token_list.c \
+					$(SRC_DIR)expansion/wildcard/get_matched_files.c \
+					$(SRC_DIR)expansion/wildcard/has_wildcard.c \
+					$(SRC_DIR)expansion/wildcard/is_pattern_matched.c \
 					$(SRC_DIR)expansion/perform_expansion.c \
 					$(SRC_DIR)expansion/remove_quote.c \
 					$(SRC_DIR)fcntl/is_directory.c \
