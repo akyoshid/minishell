@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/29 23:09:19 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/10 17:44:12 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/14 11:39:12 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	_init_heredoc_info(
 
 static int	_handle_null_input(t_heredoc_info *info)
 {
-	ft_dprintf(2, "\nminishell: warning: here-document "
+	ft_dprintf(2, "minishell: warning: here-document "
 		"delimited by end-of-file (wanted `%s')\n", info->delimiter);
 	return (HEREDOC_READER_LOOP_SUCCESS);
 }
