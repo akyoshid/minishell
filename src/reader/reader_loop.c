@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 12:56:14 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/13 01:24:00 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/14 12:36:30 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,17 @@ void	exec_input(t_ctx *ctx, char *input)
 	clear_ast(ast);
 }
 
+char	*_w_readline(void)
+{
+	char	*input;
+
+	if (isatty(STDIN_FILENO) && isatty(STDOUT_FILENO) && isatty(STDERR_FILENO))
+		input = readline("\033[1;36mminishell\033[0m$ ");
+	else
+		input = readline("minishell$ ");
+	return (input);
+}
+
 void	reader_loop(t_ctx *ctx)
 {
 	char	*input;
@@ -49,7 +60,7 @@ void	reader_loop(t_ctx *ctx)
 	while (1)
 	{
 		handle_signal(ctx);
-		input = readline("minishell$ ");
+		input = _w_readline();
 		if (input == NULL)
 		{
 			ft_dprintf(STDERR_FILENO, "exit\n");
