@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 07:57:08 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/14 02:03:20 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/14 02:19:55 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,11 @@ char	*get_path(t_ctx *ctx, char *cmd)
 	char	*slash_cmd;
 	char	*path;
 
+	if (cmd[0] == '\0' || ft_strcmp(cmd, ".") == 0 || ft_strcmp(cmd, "..") == 0)
+	{
+		print_error(cmd, "command not found", NULL, false);
+		return (ctx->exit_status = EXIT_NOTFOUND, NULL);
+	}
 	if (ft_strchr(cmd, '/') != NULL)
 		return (_get_path_cmd_is_path(ctx, cmd));
 	env_path_value = search_env_value(ctx, ctx->env_list, "PATH");
