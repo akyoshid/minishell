@@ -6,11 +6,11 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 16:52:23 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/08 14:21:53 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/14 11:04:40 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+#include "../../../inc/minishell.h"
 
 static void	_replace_key_to_value(
 	t_ctx *ctx, char **word_p, int *i_p, int var_key_len)

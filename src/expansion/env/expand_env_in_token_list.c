@@ -6,11 +6,11 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 17:20:15 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/03/30 23:40:09 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/14 11:04:35 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+#include "../../../inc/minishell.h"
 
 void	expand_env_in_token_list(t_ctx *ctx, t_token_list **token_list_p)
 {

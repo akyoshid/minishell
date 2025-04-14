@@ -6,11 +6,11 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 14:08:32 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/03/26 14:32:23 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/14 11:05:06 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+#include "../../../inc/minishell.h"
 
 // In the POSIX standard,
 //  environment variable names must meet the following conditions:

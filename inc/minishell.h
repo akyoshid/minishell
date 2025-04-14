@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:11:26 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/14 01:51:28 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/14 11:02:30 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -327,31 +327,32 @@ char			*get_path(t_ctx *ctx, char *cmd);
 // exec/wait_child.c
 void			wait_child(t_ctx *ctx, pid_t last_pid);
 
-// expansion
-// expansion/expand_env_in_token_list.c
+// expansion/env
+// expansion/env/expand_env_in_token_list.c
 void			expand_env_in_token_list(
 					t_ctx *ctx, t_token_list **token_list_p);
-// expansion/expand_env.c
+// expansion/env/expand_env.c
 void			expand_env_core(t_ctx *ctx, char **word_p, int *i_p);
 void			expand_env(t_ctx *ctx, char **word_p);
-// expansion/handle_new_list_is_null.c
+// expansion/env/handle_new_list_is_null.c
 t_token_list	*handle_new_list_is_null(
 					t_token_list *prev_node, t_token_list *current_node,
 					char *current_node_word_original);
-// expansion/handle_prev_node_is_redirop.c
+// expansion/env/handle_prev_node_is_redirop.c
 t_token_list	*handle_prev_node_is_redirop(
 					t_token_list *prev_node, t_token_list *current_node,
 					char *current_node_word_original, t_token_list *new_list);
-// expansion/is_avail_char_for_var_name.c
+// expansion/env/is_avail_char_for_var_name.c
 int				is_avail_char_for_var_name(int c);
+// expansion/env/split_word.c
+t_token_list	*split_word(t_token_list **token_list_p,
+					t_token_list *prev_node, t_token_list *current_node,
+					char *current_node_word_original);
+// expansion
 // expansion/perform_expansion.c
 void			perform_expansion(t_ctx *ctx, t_token_list **token_list_p);
 // expansion/remove_quote.c
 void			remove_quote(t_token_list *token_list);
-// expansion/split_word.c
-t_token_list	*split_word(t_token_list **token_list_p,
-					t_token_list *prev_node, t_token_list *current_node,
-					char *current_node_word_original);
 
 // fcntl
 // fcntl/is_directory.c

@@ -6,11 +6,11 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 12:56:07 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/12 22:21:41 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/14 11:05:11 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+#include "../../../inc/minishell.h"
 
 static void	_proc_quote(char **original_word_p, int *word_len_p)
 {
