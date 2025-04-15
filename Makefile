@@ -86,9 +86,9 @@ SRC = \
 					$(SRC_DIR)reader/update_history.c \
 					$(SRC_DIR)signal/check_g_signum_in_heredoc.c \
 					$(SRC_DIR)signal/check_g_signum.c \
-					$(SRC_DIR)signal/handle_signal_in_heredoc.c \
-					$(SRC_DIR)signal/handle_signal.c \
+					$(SRC_DIR)signal/handle_sigint_in_heredoc.c \
 					$(SRC_DIR)signal/init_sig_list.c \
+					$(SRC_DIR)signal/trap_signal.c \
 					$(SRC_DIR)syntax/check_syntax.c \
 					$(SRC_DIR)syntax/current_is_head.c \
 					$(SRC_DIR)syntax/prev_is_cntlop_pipe_and_or_list_l_parenthese.c \

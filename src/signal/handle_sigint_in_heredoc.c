@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_signal_in_heredoc.c                         :+:      :+:    :+:   */
+/*   handle_sigint_in_heredoc.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 23:39:48 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/10 18:19:28 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/15 15:59:00 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-int	handle_signal_in_heredoc(
+int	handle_sigint_in_heredoc(
 	t_ctx *ctx, t_token_list **current_token_node_p, char *input)
 {
 	free(input);

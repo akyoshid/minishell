@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 12:56:14 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/14 12:36:30 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/15 19:35:19 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	reader_loop(t_ctx *ctx)
 	rl_event_hook = check_g_signum;
 	while (1)
 	{
-		handle_signal(ctx);
+		trap_signal_in_rl(ctx);
 		input = _w_readline();
 		if (input == NULL)
 		{
@@ -68,6 +68,7 @@ void	reader_loop(t_ctx *ctx)
 		}
 		if (is_empty_input(input) == 1)
 			continue ;
+		trap_signal_out_of_rl(ctx);
 		exec_input(ctx, input);
 		update_history(&input, &prev_input);
 	}

@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:11:26 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/14 11:02:47 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/15 19:36:18 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -428,11 +428,12 @@ void			update_history(char **input_p, char **prev_input_p);
 int				check_g_signum_in_heredoc(void);
 // signal/check_g_signum.c
 int				check_g_signum(void);
-// signal/handle_signal_in_heredoc.c
-int				handle_signal_in_heredoc(t_ctx *ctx,
+// signal/handle_sigint_in_heredoc.c
+int				handle_sigint_in_heredoc(t_ctx *ctx,
 					t_token_list **current_token_node_p, char *input);
-// signal/handle_signal.c
-void			handle_signal(t_ctx *ctx);
+// signal/trap_signal.c
+void			trap_signal_in_rl(t_ctx *ctx);
+void			trap_signal_out_of_rl(t_ctx *ctx);
 void			reset_signal_handler(void);
 // signal/init_sig_list.c
 void			init_sig_list(t_ctx *ctx);

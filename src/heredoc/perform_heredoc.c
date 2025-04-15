@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/29 23:09:19 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/04/14 11:39:12 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/04/15 19:35:31 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,16 +69,18 @@ static int	_heredoc_reader_loop(t_ctx *ctx,
 
 	status = HEREDOC_READER_LOOP_CONTINUE;
 	rl_event_hook = check_g_signum_in_heredoc;
+	trap_signal_in_rl(ctx);
 	while (status == HEREDOC_READER_LOOP_CONTINUE)
 	{
 		input = readline("> ");
 		if (g_signum != 0)
-			status = handle_signal_in_heredoc(ctx, current_token_node_p, input);
+			status = handle_sigint_in_heredoc(ctx, current_token_node_p, input);
 		else if (input == NULL)
 			status = _handle_null_input(info);
 		else
 			status = _handle_non_null_input(ctx, info, input);
 	}
+	trap_signal_out_of_rl(ctx);
 	rl_event_hook = check_g_signum;
 	return (status);
 }
